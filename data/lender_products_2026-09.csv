@@ -1,0 +1,181 @@
+lender,as_of,segment,ltv_max,fix_years,rate,fee,source,confidence,erc,svr
+Nationwide,2026-09-15,remortgage,60,2,5.01,1499.0,nationwide-intermediary.co.uk product guide F6 (15.09.2026),full-sheet,2/1,6.49
+Nationwide,2026-09-15,remortgage,60,2,5.06,999.0,nationwide-intermediary.co.uk product guide F6 (15.09.2026),full-sheet,2/1,6.49
+Nationwide,2026-09-15,remortgage,60,2,5.34,0.0,nationwide-intermediary.co.uk product guide F6 (15.09.2026),full-sheet,2/1,6.49
+Nationwide,2026-09-15,remortgage,60,3,5.06,999.0,nationwide-intermediary.co.uk product guide F6 (15.09.2026),full-sheet,3/2/1,6.49
+Nationwide,2026-09-15,remortgage,60,3,5.34,0.0,nationwide-intermediary.co.uk product guide F6 (15.09.2026),full-sheet,3/2/1,6.49
+Nationwide,2026-09-15,remortgage,60,5,5.04,1499.0,nationwide-intermediary.co.uk product guide F6 (15.09.2026),full-sheet,5/4/3/2/1,6.49
+Nationwide,2026-09-15,remortgage,60,5,5.09,999.0,nationwide-intermediary.co.uk product guide F6 (15.09.2026),full-sheet,5/4/3/2/1,6.49
+Nationwide,2026-09-15,remortgage,60,5,5.19,0.0,nationwide-intermediary.co.uk product guide F6 (15.09.2026),full-sheet,5/4/3/2/1,6.49
+Nationwide,2026-09-15,remortgage,60,10,5.24,999.0,nationwide-intermediary.co.uk product guide F6 (15.09.2026),full-sheet,"6x5,5,4,3,2,1",6.49
+Nationwide,2026-09-15,remortgage,60,10,5.34,0.0,nationwide-intermediary.co.uk product guide F6 (15.09.2026),full-sheet,"6x5,5,4,3,2,1",6.49
+Nationwide,2026-09-15,remortgage,75,2,5.06,1499.0,nationwide-intermediary.co.uk product guide F6 (15.09.2026),full-sheet,2/1,6.49
+Nationwide,2026-09-15,remortgage,75,2,5.11,999.0,nationwide-intermediary.co.uk product guide F6 (15.09.2026),full-sheet,2/1,6.49
+Nationwide,2026-09-15,remortgage,75,2,5.42,0.0,nationwide-intermediary.co.uk product guide F6 (15.09.2026),full-sheet,2/1,6.49
+Nationwide,2026-09-15,remortgage,75,3,5.11,999.0,nationwide-intermediary.co.uk product guide F6 (15.09.2026),full-sheet,3/2/1,6.49
+Nationwide,2026-09-15,remortgage,75,3,5.42,0.0,nationwide-intermediary.co.uk product guide F6 (15.09.2026),full-sheet,3/2/1,6.49
+Nationwide,2026-09-15,remortgage,75,5,5.14,1499.0,nationwide-intermediary.co.uk product guide F6 (15.09.2026),full-sheet,5/4/3/2/1,6.49
+Nationwide,2026-09-15,remortgage,75,5,5.19,999.0,nationwide-intermediary.co.uk product guide F6 (15.09.2026),full-sheet,5/4/3/2/1,6.49
+Nationwide,2026-09-15,remortgage,75,5,5.29,0.0,nationwide-intermediary.co.uk product guide F6 (15.09.2026),full-sheet,5/4/3/2/1,6.49
+Nationwide,2026-09-15,remortgage,75,10,5.29,999.0,nationwide-intermediary.co.uk product guide F6 (15.09.2026),full-sheet,"6x5,5,4,3,2,1",6.49
+Nationwide,2026-09-15,remortgage,75,10,5.44,0.0,nationwide-intermediary.co.uk product guide F6 (15.09.2026),full-sheet,"6x5,5,4,3,2,1",6.49
+Nationwide,2026-09-15,remortgage,80,2,5.19,1499.0,nationwide-intermediary.co.uk product guide F6 (15.09.2026),full-sheet,2/1,6.49
+Nationwide,2026-09-15,remortgage,80,2,5.24,999.0,nationwide-intermediary.co.uk product guide F6 (15.09.2026),full-sheet,2/1,6.49
+Nationwide,2026-09-15,remortgage,80,2,5.43,0.0,nationwide-intermediary.co.uk product guide F6 (15.09.2026),full-sheet,2/1,6.49
+Nationwide,2026-09-15,remortgage,80,3,5.24,999.0,nationwide-intermediary.co.uk product guide F6 (15.09.2026),full-sheet,3/2/1,6.49
+Nationwide,2026-09-15,remortgage,80,3,5.46,0.0,nationwide-intermediary.co.uk product guide F6 (15.09.2026),full-sheet,3/2/1,6.49
+Nationwide,2026-09-15,remortgage,80,5,5.24,1499.0,nationwide-intermediary.co.uk product guide F6 (15.09.2026),full-sheet,5/4/3/2/1,6.49
+Nationwide,2026-09-15,remortgage,80,5,5.29,999.0,nationwide-intermediary.co.uk product guide F6 (15.09.2026),full-sheet,5/4/3/2/1,6.49
+Nationwide,2026-09-15,remortgage,80,5,5.34,0.0,nationwide-intermediary.co.uk product guide F6 (15.09.2026),full-sheet,5/4/3/2/1,6.49
+Nationwide,2026-09-15,remortgage,80,10,5.74,999.0,nationwide-intermediary.co.uk product guide F6 (15.09.2026),full-sheet,"6x5,5,4,3,2,1",6.49
+Nationwide,2026-09-15,remortgage,80,10,5.94,0.0,nationwide-intermediary.co.uk product guide F6 (15.09.2026),full-sheet,"6x5,5,4,3,2,1",6.49
+Nationwide,2026-09-15,remortgage,85,2,5.19,1499.0,nationwide-intermediary.co.uk product guide F6 (15.09.2026),full-sheet,2/1,6.49
+Nationwide,2026-09-15,remortgage,85,2,5.24,999.0,nationwide-intermediary.co.uk product guide F6 (15.09.2026),full-sheet,2/1,6.49
+Nationwide,2026-09-15,remortgage,85,2,5.43,0.0,nationwide-intermediary.co.uk product guide F6 (15.09.2026),full-sheet,2/1,6.49
+Nationwide,2026-09-15,remortgage,85,3,5.27,999.0,nationwide-intermediary.co.uk product guide F6 (15.09.2026),full-sheet,3/2/1,6.49
+Nationwide,2026-09-15,remortgage,85,3,5.46,0.0,nationwide-intermediary.co.uk product guide F6 (15.09.2026),full-sheet,3/2/1,6.49
+Nationwide,2026-09-15,remortgage,85,5,5.24,1499.0,nationwide-intermediary.co.uk product guide F6 (15.09.2026),full-sheet,5/4/3/2/1,6.49
+Nationwide,2026-09-15,remortgage,85,5,5.29,999.0,nationwide-intermediary.co.uk product guide F6 (15.09.2026),full-sheet,5/4/3/2/1,6.49
+Nationwide,2026-09-15,remortgage,85,5,5.34,0.0,nationwide-intermediary.co.uk product guide F6 (15.09.2026),full-sheet,5/4/3/2/1,6.49
+Nationwide,2026-09-15,remortgage,85,10,5.74,999.0,nationwide-intermediary.co.uk product guide F6 (15.09.2026),full-sheet,"6x5,5,4,3,2,1",6.49
+Nationwide,2026-09-15,remortgage,85,10,5.94,0.0,nationwide-intermediary.co.uk product guide F6 (15.09.2026),full-sheet,"6x5,5,4,3,2,1",6.49
+Nationwide,2026-09-15,remortgage,90,2,5.44,1499.0,nationwide-intermediary.co.uk product guide F6 (15.09.2026),full-sheet,2/1,6.49
+Nationwide,2026-09-15,remortgage,90,2,5.49,999.0,nationwide-intermediary.co.uk product guide F6 (15.09.2026),full-sheet,2/1,6.49
+Nationwide,2026-09-15,remortgage,90,2,5.68,0.0,nationwide-intermediary.co.uk product guide F6 (15.09.2026),full-sheet,2/1,6.49
+Nationwide,2026-09-15,remortgage,90,3,5.47,999.0,nationwide-intermediary.co.uk product guide F6 (15.09.2026),full-sheet,3/2/1,6.49
+Nationwide,2026-09-15,remortgage,90,3,5.69,0.0,nationwide-intermediary.co.uk product guide F6 (15.09.2026),full-sheet,3/2/1,6.49
+Nationwide,2026-09-15,remortgage,90,5,5.35,1499.0,nationwide-intermediary.co.uk product guide F6 (15.09.2026),full-sheet,5/4/3/2/1,6.49
+Nationwide,2026-09-15,remortgage,90,5,5.4,999.0,nationwide-intermediary.co.uk product guide F6 (15.09.2026),full-sheet,5/4/3/2/1,6.49
+Nationwide,2026-09-15,remortgage,90,5,5.48,0.0,nationwide-intermediary.co.uk product guide F6 (15.09.2026),full-sheet,5/4/3/2/1,6.49
+Nationwide,2026-09-15,remortgage,90,10,5.84,999.0,nationwide-intermediary.co.uk product guide F6 (15.09.2026),full-sheet,"6x5,5,4,3,2,1",6.49
+Nationwide,2026-09-15,remortgage,90,10,5.94,0.0,nationwide-intermediary.co.uk product guide F6 (15.09.2026),full-sheet,"6x5,5,4,3,2,1",6.49
+Nationwide,2026-09-15,remortgage,95,2,5.59,1499.0,nationwide-intermediary.co.uk product guide F6 (15.09.2026),full-sheet,2/1,6.49
+Nationwide,2026-09-15,remortgage,95,2,5.64,999.0,nationwide-intermediary.co.uk product guide F6 (15.09.2026),full-sheet,2/1,6.49
+Nationwide,2026-09-15,remortgage,95,2,5.74,0.0,nationwide-intermediary.co.uk product guide F6 (15.09.2026),full-sheet,2/1,6.49
+Nationwide,2026-09-15,remortgage,95,3,5.64,999.0,nationwide-intermediary.co.uk product guide F6 (15.09.2026),full-sheet,3/2/1,6.49
+Nationwide,2026-09-15,remortgage,95,3,5.74,0.0,nationwide-intermediary.co.uk product guide F6 (15.09.2026),full-sheet,3/2/1,6.49
+Nationwide,2026-09-15,remortgage,95,5,5.58,1499.0,nationwide-intermediary.co.uk product guide F6 (15.09.2026),full-sheet,5/4/3/2/1,6.49
+Nationwide,2026-09-15,remortgage,95,5,5.63,999.0,nationwide-intermediary.co.uk product guide F6 (15.09.2026),full-sheet,5/4/3/2/1,6.49
+Nationwide,2026-09-15,remortgage,95,5,5.73,0.0,nationwide-intermediary.co.uk product guide F6 (15.09.2026),full-sheet,5/4/3/2/1,6.49
+Nationwide,2026-09-15,existing-switch,60,2,4.81,999.0,nationwide-intermediary.co.uk product guide F6 (15.09.2026),full-sheet,2/1,6.49
+Nationwide,2026-09-15,existing-switch,60,2,5.08,0.0,nationwide-intermediary.co.uk product guide F6 (15.09.2026),full-sheet,2/1,6.49
+Nationwide,2026-09-15,existing-switch,60,3,4.79,999.0,nationwide-intermediary.co.uk product guide F6 (15.09.2026),full-sheet,3/2/1,6.49
+Nationwide,2026-09-15,existing-switch,60,3,5.05,0.0,nationwide-intermediary.co.uk product guide F6 (15.09.2026),full-sheet,3/2/1,6.49
+Nationwide,2026-09-15,existing-switch,60,5,4.89,999.0,nationwide-intermediary.co.uk product guide F6 (15.09.2026),full-sheet,5/4/3/2/1,6.49
+Nationwide,2026-09-15,existing-switch,60,5,5.04,0.0,nationwide-intermediary.co.uk product guide F6 (15.09.2026),full-sheet,5/4/3/2/1,6.49
+Nationwide,2026-09-15,existing-switch,60,10,5.09,999.0,nationwide-intermediary.co.uk product guide F6 (15.09.2026),full-sheet,"6x5,5,4,3,2,1",6.49
+Nationwide,2026-09-15,existing-switch,60,10,5.19,0.0,nationwide-intermediary.co.uk product guide F6 (15.09.2026),full-sheet,"6x5,5,4,3,2,1",6.49
+Nationwide,2026-09-15,existing-switch,75,2,4.91,999.0,nationwide-intermediary.co.uk product guide F6 (15.09.2026),full-sheet,2/1,6.49
+Nationwide,2026-09-15,existing-switch,75,2,5.19,0.0,nationwide-intermediary.co.uk product guide F6 (15.09.2026),full-sheet,2/1,6.49
+Nationwide,2026-09-15,existing-switch,75,3,4.9,999.0,nationwide-intermediary.co.uk product guide F6 (15.09.2026),full-sheet,3/2/1,6.49
+Nationwide,2026-09-15,existing-switch,75,3,5.17,0.0,nationwide-intermediary.co.uk product guide F6 (15.09.2026),full-sheet,3/2/1,6.49
+Nationwide,2026-09-15,existing-switch,75,5,4.99,999.0,nationwide-intermediary.co.uk product guide F6 (15.09.2026),full-sheet,5/4/3/2/1,6.49
+Nationwide,2026-09-15,existing-switch,75,5,5.08,0.0,nationwide-intermediary.co.uk product guide F6 (15.09.2026),full-sheet,5/4/3/2/1,6.49
+Nationwide,2026-09-15,existing-switch,75,10,5.14,999.0,nationwide-intermediary.co.uk product guide F6 (15.09.2026),full-sheet,"6x5,5,4,3,2,1",6.49
+Nationwide,2026-09-15,existing-switch,75,10,5.29,0.0,nationwide-intermediary.co.uk product guide F6 (15.09.2026),full-sheet,"6x5,5,4,3,2,1",6.49
+Nationwide,2026-09-15,existing-switch,80,2,5.09,999.0,nationwide-intermediary.co.uk product guide F6 (15.09.2026),full-sheet,2/1,6.49
+Nationwide,2026-09-15,existing-switch,80,2,5.32,0.0,nationwide-intermediary.co.uk product guide F6 (15.09.2026),full-sheet,2/1,6.49
+Nationwide,2026-09-15,existing-switch,80,3,5.14,999.0,nationwide-intermediary.co.uk product guide F6 (15.09.2026),full-sheet,3/2/1,6.49
+Nationwide,2026-09-15,existing-switch,80,3,5.33,0.0,nationwide-intermediary.co.uk product guide F6 (15.09.2026),full-sheet,3/2/1,6.49
+Nationwide,2026-09-15,existing-switch,80,5,5.14,999.0,nationwide-intermediary.co.uk product guide F6 (15.09.2026),full-sheet,5/4/3/2/1,6.49
+Nationwide,2026-09-15,existing-switch,80,5,5.24,0.0,nationwide-intermediary.co.uk product guide F6 (15.09.2026),full-sheet,5/4/3/2/1,6.49
+Nationwide,2026-09-15,existing-switch,80,10,5.29,999.0,nationwide-intermediary.co.uk product guide F6 (15.09.2026),full-sheet,"6x5,5,4,3,2,1",6.49
+Nationwide,2026-09-15,existing-switch,80,10,5.54,0.0,nationwide-intermediary.co.uk product guide F6 (15.09.2026),full-sheet,"6x5,5,4,3,2,1",6.49
+Nationwide,2026-09-15,existing-switch,85,2,5.09,999.0,nationwide-intermediary.co.uk product guide F6 (15.09.2026),full-sheet,2/1,6.49
+Nationwide,2026-09-15,existing-switch,85,2,5.32,0.0,nationwide-intermediary.co.uk product guide F6 (15.09.2026),full-sheet,2/1,6.49
+Nationwide,2026-09-15,existing-switch,85,3,5.17,999.0,nationwide-intermediary.co.uk product guide F6 (15.09.2026),full-sheet,3/2/1,6.49
+Nationwide,2026-09-15,existing-switch,85,3,5.36,0.0,nationwide-intermediary.co.uk product guide F6 (15.09.2026),full-sheet,3/2/1,6.49
+Nationwide,2026-09-15,existing-switch,85,5,5.14,999.0,nationwide-intermediary.co.uk product guide F6 (15.09.2026),full-sheet,5/4/3/2/1,6.49
+Nationwide,2026-09-15,existing-switch,85,5,5.24,0.0,nationwide-intermediary.co.uk product guide F6 (15.09.2026),full-sheet,5/4/3/2/1,6.49
+Nationwide,2026-09-15,existing-switch,85,10,5.29,999.0,nationwide-intermediary.co.uk product guide F6 (15.09.2026),full-sheet,"6x5,5,4,3,2,1",6.49
+Nationwide,2026-09-15,existing-switch,85,10,5.54,0.0,nationwide-intermediary.co.uk product guide F6 (15.09.2026),full-sheet,"6x5,5,4,3,2,1",6.49
+Nationwide,2026-09-15,existing-switch,90,2,5.34,999.0,nationwide-intermediary.co.uk product guide F6 (15.09.2026),full-sheet,2/1,6.49
+Nationwide,2026-09-15,existing-switch,90,2,5.58,0.0,nationwide-intermediary.co.uk product guide F6 (15.09.2026),full-sheet,2/1,6.49
+Nationwide,2026-09-15,existing-switch,90,3,5.37,999.0,nationwide-intermediary.co.uk product guide F6 (15.09.2026),full-sheet,3/2/1,6.49
+Nationwide,2026-09-15,existing-switch,90,3,5.59,0.0,nationwide-intermediary.co.uk product guide F6 (15.09.2026),full-sheet,3/2/1,6.49
+Nationwide,2026-09-15,existing-switch,90,5,5.25,999.0,nationwide-intermediary.co.uk product guide F6 (15.09.2026),full-sheet,5/4/3/2/1,6.49
+Nationwide,2026-09-15,existing-switch,90,5,5.38,0.0,nationwide-intermediary.co.uk product guide F6 (15.09.2026),full-sheet,5/4/3/2/1,6.49
+Nationwide,2026-09-15,existing-switch,90,10,5.59,999.0,nationwide-intermediary.co.uk product guide F6 (15.09.2026),full-sheet,"6x5,5,4,3,2,1",6.49
+Nationwide,2026-09-15,existing-switch,90,10,5.79,0.0,nationwide-intermediary.co.uk product guide F6 (15.09.2026),full-sheet,"6x5,5,4,3,2,1",6.49
+Nationwide,2026-09-15,existing-switch,95,2,5.59,999.0,nationwide-intermediary.co.uk product guide F6 (15.09.2026),full-sheet,2/1,6.49
+Nationwide,2026-09-15,existing-switch,95,2,5.73,0.0,nationwide-intermediary.co.uk product guide F6 (15.09.2026),full-sheet,2/1,6.49
+Nationwide,2026-09-15,existing-switch,95,3,5.62,999.0,nationwide-intermediary.co.uk product guide F6 (15.09.2026),full-sheet,3/2/1,6.49
+Nationwide,2026-09-15,existing-switch,95,3,5.73,0.0,nationwide-intermediary.co.uk product guide F6 (15.09.2026),full-sheet,3/2/1,6.49
+Nationwide,2026-09-15,existing-switch,95,5,5.55,999.0,nationwide-intermediary.co.uk product guide F6 (15.09.2026),full-sheet,5/4/3/2/1,6.49
+Nationwide,2026-09-15,existing-switch,95,5,5.6,0.0,nationwide-intermediary.co.uk product guide F6 (15.09.2026),full-sheet,5/4/3/2/1,6.49
+TSB,2026-09-15,remortgage,60,2,4.84,1495.0,intermediary.tsb.co.uk product guide (15.09.2026),full-sheet,2.5/1.5,7.24
+TSB,2026-09-15,remortgage,60,2,4.89,995.0,intermediary.tsb.co.uk product guide (15.09.2026),full-sheet,2.5/1.5,7.24
+TSB,2026-09-15,remortgage,60,2,5.14,0.0,intermediary.tsb.co.uk product guide (15.09.2026),full-sheet,2.5/1.5,7.24
+TSB,2026-09-15,remortgage,75,2,4.94,1495.0,intermediary.tsb.co.uk product guide (15.09.2026),full-sheet,2.5/1.5,7.24
+TSB,2026-09-15,remortgage,75,2,4.99,995.0,intermediary.tsb.co.uk product guide (15.09.2026),full-sheet,2.5/1.5,7.24
+TSB,2026-09-15,remortgage,75,2,5.24,0.0,intermediary.tsb.co.uk product guide (15.09.2026),full-sheet,2.5/1.5,7.24
+TSB,2026-09-15,remortgage,80,2,5.14,995.0,intermediary.tsb.co.uk product guide (15.09.2026),full-sheet,2.5/1.5,7.24
+TSB,2026-09-15,remortgage,80,2,5.39,0.0,intermediary.tsb.co.uk product guide (15.09.2026),full-sheet,2.5/1.5,7.24
+TSB,2026-09-15,remortgage,85,2,5.14,995.0,intermediary.tsb.co.uk product guide (15.09.2026),full-sheet,2.5/1.5,7.24
+TSB,2026-09-15,remortgage,85,2,5.39,0.0,intermediary.tsb.co.uk product guide (15.09.2026),full-sheet,2.5/1.5,7.24
+TSB,2026-09-15,remortgage,90,2,5.54,0.0,intermediary.tsb.co.uk product guide (15.09.2026),full-sheet,2.5/1.5,7.24
+TSB,2026-09-15,remortgage,60,3,4.84,995.0,intermediary.tsb.co.uk product guide (15.09.2026),full-sheet,3.5/2.5/1.5,7.24
+TSB,2026-09-15,remortgage,60,3,5.09,0.0,intermediary.tsb.co.uk product guide (15.09.2026),full-sheet,3.5/2.5/1.5,7.24
+TSB,2026-09-15,remortgage,75,3,4.94,995.0,intermediary.tsb.co.uk product guide (15.09.2026),full-sheet,3.5/2.5/1.5,7.24
+TSB,2026-09-15,remortgage,75,3,5.19,0.0,intermediary.tsb.co.uk product guide (15.09.2026),full-sheet,3.5/2.5/1.5,7.24
+TSB,2026-09-15,remortgage,80,3,5.09,995.0,intermediary.tsb.co.uk product guide (15.09.2026),full-sheet,3.5/2.5/1.5,7.24
+TSB,2026-09-15,remortgage,80,3,5.34,0.0,intermediary.tsb.co.uk product guide (15.09.2026),full-sheet,3.5/2.5/1.5,7.24
+TSB,2026-09-15,remortgage,85,3,5.09,995.0,intermediary.tsb.co.uk product guide (15.09.2026),full-sheet,3.5/2.5/1.5,7.24
+TSB,2026-09-15,remortgage,85,3,5.34,0.0,intermediary.tsb.co.uk product guide (15.09.2026),full-sheet,3.5/2.5/1.5,7.24
+TSB,2026-09-15,remortgage,60,5,4.94,995.0,intermediary.tsb.co.uk product guide (15.09.2026),full-sheet,5/4/3/2,7.24
+TSB,2026-09-15,remortgage,60,5,5.09,0.0,intermediary.tsb.co.uk product guide (15.09.2026),full-sheet,5/4/3/2,7.24
+TSB,2026-09-15,remortgage,75,5,5.04,995.0,intermediary.tsb.co.uk product guide (15.09.2026),full-sheet,5/4/3/2,7.24
+TSB,2026-09-15,remortgage,75,5,5.19,0.0,intermediary.tsb.co.uk product guide (15.09.2026),full-sheet,5/4/3/2,7.24
+TSB,2026-09-15,remortgage,80,5,5.19,995.0,intermediary.tsb.co.uk product guide (15.09.2026),full-sheet,5/4/3/2,7.24
+TSB,2026-09-15,remortgage,80,5,5.34,0.0,intermediary.tsb.co.uk product guide (15.09.2026),full-sheet,5/4/3/2,7.24
+TSB,2026-09-15,remortgage,85,5,5.19,995.0,intermediary.tsb.co.uk product guide (15.09.2026),full-sheet,5/4/3/2,7.24
+TSB,2026-09-15,remortgage,85,5,5.34,0.0,intermediary.tsb.co.uk product guide (15.09.2026),full-sheet,5/4/3/2,7.24
+TSB,2026-09-15,remortgage,90,5,5.39,0.0,intermediary.tsb.co.uk product guide (15.09.2026),full-sheet,5/4/3/2,7.24
+TSB,2026-09-15,existing-switch,60,2,4.64,1495.0,intermediary.tsb.co.uk product guide (15.09.2026),full-sheet,2.5/1.5,7.24
+TSB,2026-09-15,existing-switch,60,2,4.69,995.0,intermediary.tsb.co.uk product guide (15.09.2026),full-sheet,2.5/1.5,7.24
+TSB,2026-09-15,existing-switch,60,2,4.99,0.0,intermediary.tsb.co.uk product guide (15.09.2026),full-sheet,2.5/1.5,7.24
+TSB,2026-09-15,existing-switch,75,2,4.74,1495.0,intermediary.tsb.co.uk product guide (15.09.2026),full-sheet,2.5/1.5,7.24
+TSB,2026-09-15,existing-switch,75,2,4.79,995.0,intermediary.tsb.co.uk product guide (15.09.2026),full-sheet,2.5/1.5,7.24
+TSB,2026-09-15,existing-switch,75,2,5.04,0.0,intermediary.tsb.co.uk product guide (15.09.2026),full-sheet,2.5/1.5,7.24
+TSB,2026-09-15,existing-switch,80,2,4.99,995.0,intermediary.tsb.co.uk product guide (15.09.2026),full-sheet,2.5/1.5,7.24
+TSB,2026-09-15,existing-switch,80,2,5.24,0.0,intermediary.tsb.co.uk product guide (15.09.2026),full-sheet,2.5/1.5,7.24
+TSB,2026-09-15,existing-switch,85,2,4.99,995.0,intermediary.tsb.co.uk product guide (15.09.2026),full-sheet,2.5/1.5,7.24
+TSB,2026-09-15,existing-switch,85,2,5.24,0.0,intermediary.tsb.co.uk product guide (15.09.2026),full-sheet,2.5/1.5,7.24
+TSB,2026-09-15,existing-switch,90,2,5.19,995.0,intermediary.tsb.co.uk product guide (15.09.2026),full-sheet,2.5/1.5,7.24
+TSB,2026-09-15,existing-switch,90,2,5.39,0.0,intermediary.tsb.co.uk product guide (15.09.2026),full-sheet,2.5/1.5,7.24
+TSB,2026-09-15,existing-switch,60,3,4.69,1495.0,intermediary.tsb.co.uk product guide (15.09.2026),full-sheet,3.5/2.5/1.5,7.24
+TSB,2026-09-15,existing-switch,60,3,4.74,995.0,intermediary.tsb.co.uk product guide (15.09.2026),full-sheet,3.5/2.5/1.5,7.24
+TSB,2026-09-15,existing-switch,60,3,4.99,0.0,intermediary.tsb.co.uk product guide (15.09.2026),full-sheet,3.5/2.5/1.5,7.24
+TSB,2026-09-15,existing-switch,75,3,4.79,1495.0,intermediary.tsb.co.uk product guide (15.09.2026),full-sheet,3.5/2.5/1.5,7.24
+TSB,2026-09-15,existing-switch,75,3,4.84,995.0,intermediary.tsb.co.uk product guide (15.09.2026),full-sheet,3.5/2.5/1.5,7.24
+TSB,2026-09-15,existing-switch,75,3,5.09,0.0,intermediary.tsb.co.uk product guide (15.09.2026),full-sheet,3.5/2.5/1.5,7.24
+TSB,2026-09-15,existing-switch,80,3,4.99,995.0,intermediary.tsb.co.uk product guide (15.09.2026),full-sheet,3.5/2.5/1.5,7.24
+TSB,2026-09-15,existing-switch,80,3,5.19,0.0,intermediary.tsb.co.uk product guide (15.09.2026),full-sheet,3.5/2.5/1.5,7.24
+TSB,2026-09-15,existing-switch,85,3,5.04,995.0,intermediary.tsb.co.uk product guide (15.09.2026),full-sheet,3.5/2.5/1.5,7.24
+TSB,2026-09-15,existing-switch,85,3,5.24,0.0,intermediary.tsb.co.uk product guide (15.09.2026),full-sheet,3.5/2.5/1.5,7.24
+TSB,2026-09-15,existing-switch,60,5,4.79,1495.0,intermediary.tsb.co.uk product guide (15.09.2026),full-sheet,5/4/3/2,7.24
+TSB,2026-09-15,existing-switch,60,5,4.84,995.0,intermediary.tsb.co.uk product guide (15.09.2026),full-sheet,5/4/3/2,7.24
+TSB,2026-09-15,existing-switch,60,5,4.94,0.0,intermediary.tsb.co.uk product guide (15.09.2026),full-sheet,5/4/3/2,7.24
+TSB,2026-09-15,existing-switch,75,5,4.89,1495.0,intermediary.tsb.co.uk product guide (15.09.2026),full-sheet,5/4/3/2,7.24
+TSB,2026-09-15,existing-switch,75,5,4.94,995.0,intermediary.tsb.co.uk product guide (15.09.2026),full-sheet,5/4/3/2,7.24
+TSB,2026-09-15,existing-switch,75,5,5.04,0.0,intermediary.tsb.co.uk product guide (15.09.2026),full-sheet,5/4/3/2,7.24
+TSB,2026-09-15,existing-switch,80,5,5.09,995.0,intermediary.tsb.co.uk product guide (15.09.2026),full-sheet,5/4/3/2,7.24
+TSB,2026-09-15,existing-switch,80,5,5.24,0.0,intermediary.tsb.co.uk product guide (15.09.2026),full-sheet,5/4/3/2,7.24
+TSB,2026-09-15,existing-switch,85,5,5.09,995.0,intermediary.tsb.co.uk product guide (15.09.2026),full-sheet,5/4/3/2,7.24
+TSB,2026-09-15,existing-switch,85,5,5.24,0.0,intermediary.tsb.co.uk product guide (15.09.2026),full-sheet,5/4/3/2,7.24
+TSB,2026-09-15,existing-switch,90,5,5.19,995.0,intermediary.tsb.co.uk product guide (15.09.2026),full-sheet,5/4/3/2,7.24
+TSB,2026-09-15,existing-switch,90,5,5.29,0.0,intermediary.tsb.co.uk product guide (15.09.2026),full-sheet,5/4/3/2,7.24
+Halifax,2026-08-06,remortgage,60,2,4.46,999.0,"Uswitch best-buy table, 6 Aug 2026 (fee assumed £999)",best-buy-point,,
+Halifax,2026-08-06,remortgage,60,5,4.5,999.0,"Uswitch best-buy table, 6 Aug 2026 (fee assumed £999)",best-buy-point,,
+first direct,2026-08-05,remortgage,60,2,4.47,490.0,"Moneyfacts weekly roundup, early Aug 2026",best-buy-point,,
+first direct,2026-08-05,remortgage,60,3,4.64,490.0,"Moneyfacts weekly roundup, early Aug 2026",best-buy-point,,
+first direct,2026-08-05,remortgage,60,5,4.54,490.0,"Moneyfacts weekly roundup, early Aug 2026",best-buy-point,,
+first direct,2026-08-05,remortgage,75,2,4.57,490.0,"Moneyfacts weekly roundup, early Aug 2026",best-buy-point,,
+first direct,2026-08-05,remortgage,75,5,4.62,490.0,"Moneyfacts weekly roundup, early Aug 2026",best-buy-point,,
+first direct,2026-08-05,remortgage,85,3,4.99,490.0,"Moneyfacts weekly roundup, early Aug 2026",best-buy-point,,
+Coventry,2026-06-12,purchase,75,5,4.6,999.0,"The Intermediary, 12 Jun 2026 (purchase product; stale)",press-point,,
+Coventry,2026-06-12,purchase,90,2,5.15,0.0,"The Intermediary, 12 Jun 2026 (stale)",press-point,,
+BoE market average,2026-08-31,benchmark,75,2,4.92,,"Bank of England quoted household rates, 75% LTV, Aug 2026",official-average,,
+BoE market average,2026-08-31,benchmark,75,3,4.77,,"Bank of England quoted household rates, 75% LTV, Aug 2026",official-average,,
+BoE market average,2026-08-31,benchmark,75,5,4.78,,"Bank of England quoted household rates, 75% LTV, Aug 2026",official-average,,
+BoE market average,2026-08-31,benchmark,75,10,5.25,,"Bank of England quoted household rates, 75% LTV, Aug 2026",official-average,,
