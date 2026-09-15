@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mortgage position — what your deal is worth on today's market</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F1F3F6; --surface:#FFFFFF; --surface2:#E8ECF2; --text:#14213D; --muted:#5B6B85; --line:#CBD3DF;
+  --market:#1B6FA8; --money:#8F6316; --cost:#B23B38; --focus:#1B6FA8;
+  --serif:"Fraunces",Georgia,"Times New Roman",serif; --sans:"IBM Plex Sans",-apple-system,"Segoe UI",Roboto,sans-serif;
+}
+@media (prefers-color-scheme:dark){ :root:not([data-theme="light"]){
+  --bg:#0F1C30; --surface:#172740; --surface2:#1F3150; --text:#E6ECF5; --muted:#93A3BB; --line:#2C3F5E;
+  --market:#6CC5E8; --money:#D9A85B; --cost:#E3716F; --focus:#6CC5E8;
+}}
+:root[data-theme="dark"]{
+  --bg:#0F1C30; --surface:#172740; --surface2:#1F3150; --text:#E6ECF5; --muted:#93A3BB; --line:#2C3F5E;
+  --market:#6CC5E8; --money:#D9A85B; --cost:#E3716F; --focus:#6CC5E8;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--text);font-family:var(--sans);font-size:15px;line-height:1.45;font-variant-numeric:tabular-nums}
+a{color:var(--market)}
+:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+header{padding:22px 28px 14px;border-bottom:1px solid var(--line);display:flex;flex-wrap:wrap;gap:14px 28px;align-items:baseline}
+header h1{font-family:var(--serif);font-weight:500;font-size:26px;margin:0;letter-spacing:-.01em}
+header p{margin:0;color:var(--muted);max-width:60ch}
+.modes{margin-left:auto;display:flex;border:1px solid var(--line);border-radius:999px;overflow:hidden}
+.modes button{background:transparent;border:0;color:var(--muted);padding:8px 16px;font:inherit;font-weight:500;cursor:pointer}
+.modes button[aria-pressed="true"]{background:var(--text);color:var(--bg)}
+main{display:grid;grid-template-columns:350px minmax(0,1fr);gap:0;min-height:calc(100vh - 80px)}
+aside{border-right:1px solid var(--line);padding:20px 22px 40px;background:var(--surface)}
+section.out{padding:26px 34px 60px;max-width:1080px}
+fieldset{border:0;padding:0;margin:0 0 22px}
+legend{font-weight:600;font-size:14px;margin-bottom:8px;padding:0}
+.row{display:grid;grid-template-columns:1fr 118px;align-items:center;gap:10px;margin:6px 0}
+.row label{color:var(--muted);font-size:14px}
+input[type=number],select{width:100%;font:inherit;font-size:14px;padding:6px 8px;border:1px solid var(--line);border-radius:6px;background:var(--bg);color:var(--text)}
+input[type=number]{text-align:right}
+.unit{color:var(--muted);font-size:12px;margin-left:4px}
+.switch{display:flex;align-items:center;gap:8px;font-size:14px;color:var(--muted);margin:6px 0}
+.switch input{accent-color:var(--market)}
+details{border-top:1px solid var(--line);padding-top:12px;margin-top:8px}
+summary{cursor:pointer;font-weight:600;font-size:14px;color:var(--market)}
+details .row{grid-template-columns:1fr 96px}
+.mkt-note{font-size:12px;color:var(--muted);margin:6px 0 10px}
+/* outputs */
+.hero{margin:0 0 26px}
+.hero .lead{font-family:var(--serif);font-weight:500;font-size:clamp(26px,3.4vw,40px);line-height:1.15;letter-spacing:-.015em;margin:0 0 10px;max-width:22ch}
+.hero .lead b{font-weight:700;color:var(--money)}
+.hero .lead b.cost{color:var(--cost)}
+.hero .sub{margin:0;color:var(--muted);font-size:16px;max-width:64ch}
+.hero .sub em{font-style:normal;color:var(--market)}
+.whatif{margin:22px 0 30px;padding:18px 20px;border:1px solid var(--line);border-radius:10px;background:var(--surface)}
+.whatif .q{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:baseline;margin-bottom:8px}
+.whatif .q strong{font-family:var(--serif);font-size:22px;font-weight:700;color:var(--market)}
+.whatif input[type=range]{width:100%;accent-color:var(--market)}
+.whatif .ans{margin-top:8px;font-size:15px;color:var(--muted)}
+.whatif .ans b{font-family:var(--serif);font-size:20px;font-weight:700;color:var(--money)}
+.whatif .ans b.cost{color:var(--cost)}
+.figs{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin:0 0 30px}
+.fig{padding:14px 16px;border-left:3px solid var(--line);background:var(--surface);border-radius:0 8px 8px 0}
+.fig.market{border-left-color:var(--market)} .fig.money{border-left-color:var(--money)} .fig.cost{border-left-color:var(--cost)}
+.fig .v{font-family:var(--serif);font-size:30px;font-weight:700;line-height:1.05;margin:2px 0 4px}
+.fig.market .v{color:var(--market)} .fig.money .v{color:var(--money)} .fig.cost .v{color:var(--cost)}
+.fig .l{font-size:13px;color:var(--muted)} .fig .s{font-size:13px;color:var(--muted);margin-top:4px}
+h2{font-family:var(--serif);font-weight:500;font-size:20px;margin:30px 0 10px}
+.chart{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px 12px 8px;overflow:hidden}
+.chart svg{width:100%;height:auto;display:block}
+.chart .lg{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:13px;color:var(--muted);padding:6px 8px 4px}
+.chart .lg i{display:inline-block;width:14px;height:3px;vertical-align:middle;margin-right:6px;border-radius:2px}
+.ledger{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:14px;background:var(--surface);border:1px solid var(--line);border-radius:10px}
+th,td{padding:8px 12px;text-align:right;border-bottom:1px solid var(--line)}
+th:first-child,td:first-child{text-align:left}
+thead th{font-weight:600;color:var(--muted);font-size:13px}
+tr.tot td{font-weight:600;border-top:2px solid var(--line)}
+td.money{color:var(--money);font-weight:600} td.cost{color:var(--cost)}
+.prov{margin-top:34px;padding-top:14px;border-top:1px solid var(--line);color:var(--muted);font-size:13px;max-width:78ch}
+.prov b{color:var(--text);font-weight:600}
+.how{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px 22px;margin:0 0 26px;padding:16px 0 18px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.how div{font-size:14px;color:var(--muted);line-height:1.4}
+.how b{display:block;color:var(--text);font-weight:600;margin-bottom:3px}
+.fig details{margin-top:8px;font-size:13px}
+.fig summary{color:var(--market);cursor:pointer;font-weight:500;list-style:none}
+.fig summary::-webkit-details-marker{display:none}
+.fig summary::before{content:"+ ";}
+.fig details[open] summary::before{content:"− ";}
+.fig details p{margin:6px 0 0;color:var(--muted);line-height:1.45}
+.whatif .how-note{font-size:13px;color:var(--muted);margin:10px 0 0;max-width:70ch}
+.note{font-size:14px;color:var(--muted);margin:0 0 12px;max-width:74ch}
+.guide{margin-top:8px}
+.guide details{border:1px solid var(--line);border-radius:8px;background:var(--surface);padding:10px 14px;margin:0 0 8px;border-top:1px solid var(--line)}
+.guide summary{font-weight:600;color:var(--text);cursor:pointer;font-size:15px}
+.guide details p{margin:8px 0 2px;color:var(--muted);max-width:74ch;line-height:1.5}
+.guide details p+p{margin-top:6px}
+.guide .eg{color:var(--text)}
+.lenders{margin:0 0 30px}
+.lenders .ctl{display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center;margin:0 0 10px;font-size:14px;color:var(--muted)}
+.lenders .ctl select{width:auto}
+.lenders table td.name{font-weight:600;color:var(--text)}
+.lenders td.mkt{color:var(--market)} .lenders td.best{color:var(--money);font-weight:600}
+.lenders .conf{font-size:12px;color:var(--muted)}
+.lenders button{font:inherit;font-size:13px;padding:4px 10px;border:1px solid var(--line);border-radius:6px;background:var(--surface2);color:var(--text);cursor:pointer}
+.lenders button:hover{border-color:var(--market)}
+.hidden{display:none !important}
+@media (max-width:900px){ main{grid-template-columns:1fr} aside{border-right:0;border-bottom:1px solid var(--line)} section.out{padding:22px 18px 50px} header{padding:18px}}
+@media (prefers-reduced-motion:reduce){ *{transition:none !important;animation:none !important} }
+</style>
+</head>
+<body>
+<header>
+  <div>
+    <h1>Mortgage position</h1>
+    <p>What your deal is worth on today's market. Every figure is arithmetic on your contract, an offer you hold, and published Bank of England data. Nothing is forecast.</p>
+  </div>
+  <div class="modes" role="group" aria-label="Situation">
+    <button type="button" id="modeA" aria-pressed="true">Coming off a fix</button>
+    <button type="button" id="modeB" aria-pressed="false">Mid-fix: break or stay</button>
+  </div>
+</header>
+
+<main>
+<aside>
+  <fieldset>
+    <legend>Your loan</legend>
+    <div class="row"><label for="bal">Balance outstanding</label><input id="bal" type="number" value="250000" step="1000"></div>
+    <div class="row"><label for="term">Years left on the term</label><input id="term" type="number" value="23" step="1"></div>
+  </fieldset>
+
+  <fieldset>
+    <legend>Your current deal</legend>
+    <div class="row"><label for="cur">Rate you pay now <span class="unit">%</span></label><input id="cur" type="number" value="1.99" step="0.01"></div>
+    <div class="row"><label for="left">Months left on the fix</label><input id="left" type="number" value="4" step="1"></div>
+    <div id="ercBlock" class="hidden">
+      <div class="row"><label for="into">Months into the fix</label><input id="into" type="number" value="35" step="1"></div>
+      <div class="row"><label for="erc">Early repayment charge by year <span class="unit">%</span></label><input id="erc" type="text" value="5,4,3,2,1" style="width:100%;font:inherit;font-size:14px;padding:6px 8px;border:1px solid var(--line);border-radius:6px;background:var(--bg);color:var(--text);text-align:right"></div>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>The offers you've been given</legend>
+    <div class="row"><label for="o2">Two-year fix <span class="unit">%</span></label><input id="o2" type="number" value="4.92" step="0.01"></div>
+    <div class="row"><label for="o5">Five-year fix <span class="unit">%</span></label><input id="o5" type="number" value="4.78" step="0.01"></div>
+    <div class="row"><label for="fee">Product fee <span class="unit">£</span></label><input id="fee" type="number" value="999" step="1"></div>
+    <div class="row"><label for="oth">Other costs (valuation, legal, exit) <span class="unit">£</span></label><input id="oth" type="number" value="0" step="1"></div>
+    <label class="switch"><input id="feeAdded" type="checkbox" checked> Fee added to the loan</label>
+    <div class="row"><label for="hz">Horizon</label><select id="hz"><option value="24">2 years</option><option value="36">3 years</option><option value="60" selected>5 years</option><option value="120">10 years</option></select></div>
+  </fieldset>
+
+  <details>
+    <summary>Market inputs (Bank of England, Aug 2026)</summary>
+    <p class="mkt-note">Quoted rates are the BoE weighted average at 75% LTV. Swaps are the BoE OIS curve, month average. Change anything to test a different day.</p>
+    <div class="row"><label for="q2">Quoted 2y fix</label><input id="q2" type="number" value="4.92" step="0.01"></div>
+    <div class="row"><label for="q3">Quoted 3y fix</label><input id="q3" type="number" value="4.77" step="0.01"></div>
+    <div class="row"><label for="q5">Quoted 5y fix</label><input id="q5" type="number" value="4.78" step="0.01"></div>
+    <div class="row"><label for="svr">Standard variable rate</label><input id="svr" type="number" value="6.58" step="0.01"></div>
+    <div class="row"><label for="s1">Swap 1y</label><input id="s1" type="number" value="4.042" step="0.001"></div>
+    <div class="row"><label for="s2">Swap 2y</label><input id="s2" type="number" value="4.196" step="0.001"></div>
+    <div class="row"><label for="s3">Swap 3y</label><input id="s3" type="number" value="4.233" step="0.001"></div>
+    <div class="row"><label for="s4">Swap 4y</label><input id="s4" type="number" value="4.257" step="0.001"></div>
+    <div class="row"><label for="s5">Swap 5y</label><input id="s5" type="number" value="4.292" step="0.001"></div>
+    <div class="row"><label for="s7">Swap 7y</label><input id="s7" type="number" value="4.395" step="0.001"></div>
+    <div class="row"><label for="s10">Swap 10y</label><input id="s10" type="number" value="4.584" step="0.001"></div>
+    <div class="row"><label for="spr">Lender spread over swap <span class="unit">bp</span></label><input id="spr" type="number" value="62" step="1"></div>
+    <div class="row"><label for="rl">Relock option value <span class="unit">bp</span></label><input id="rl" type="number" value="25" step="1"></div>
+    <div class="row"><label for="fr">Relock friction <span class="unit">bp</span></label><input id="fr" type="number" value="5" step="1"></div>
+    <label class="switch"><input id="applyRl" type="checkbox" checked> Credit the relock option on future fixes</label>
+    <div class="row"><label for="dr">Discount rate (blank = quoted 5y)</label><input id="dr" type="number" step="0.01" placeholder="4.78"></div>
+  </details>
+</aside>
+
+<section class="out">
+  <div class="hero">
+    <p class="lead" id="lead"></p>
+    <p class="sub" id="sub"></p>
+  </div>
+
+  <div class="how" aria-label="How this works">
+    <div><b>1. Every choice is costed in full</b>Every monthly payment, every fee, and what you'd still owe at the end. Not just the headline rate.</div>
+    <div><b>2. Future rates come from the market, not a guess</b>Banks lock in future borrowing costs today and those prices are published. We read them off. We don't forecast.</div>
+    <div><b>3. The free option is counted</b>You can lock a new deal early and switch if a cheaper one appears. It's worth real money and most people don't know they have it.</div>
+    <div><b>4. You get the break-even, not a verdict</b>We tell you what would have to be true for the other choice to win. Whether you believe it is up to you.</div>
+  </div>
+
+  <div class="whatif">
+    <div class="q"><span id="wiq"></span><strong id="wiv"></strong></div>
+    <input id="wi" type="range" min="-150" max="150" step="5" value="0" aria-label="What if future rates differ from the market">
+    <div class="ans" id="wia"></div>
+    <p class="how-note">The market's price is the middle of the road, not a promise — in 2021 it was badly wrong. Drag the slider to see how far reality would have to differ from it before the other choice wins. 100bp means one percentage point.</p>
+  </div>
+
+  <div class="figs" id="figs"></div>
+
+  <h2 id="chartTitle">Monthly payment, each route</h2>
+  <div class="chart">
+    <div class="lg" id="legend"></div>
+    <svg id="svg" viewBox="0 0 900 320" role="img" aria-label="Monthly payment by route over the horizon"></svg>
+  </div>
+
+  <h2>What lenders are actually charging</h2>
+  <p class="note">Published lender rates alongside the market average. Full-sheet rows are parsed from the lender's own intermediary product guide dated 15 September 2026; best-buy and press points are older and partial, and say so. Spread is the rate minus the matched swap. "Fee wins above" is the loan size where the fee-paying variant becomes cheaper than the fee-free one over the fix. Click a row to use it as your offer.</p>
+  <div class="lenders">
+    <div class="ctl">
+      <label>Loan-to-value band <select id="lLtv"><option>60</option><option selected>75</option><option>80</option><option>85</option><option>90</option><option>95</option></select></label>
+      <label>Fix <select id="lFix"><option>2</option><option>3</option><option selected>5</option><option>10</option></select></label>
+      <label>Who for <select id="lSeg"><option value="remortgage" selected>New borrower (remortgage)</option><option value="existing-switch">Existing customer (rate switch)</option></select></label>
+    </div>
+    <div class="ledger" id="lenderTable"></div>
+  </div>
+
+  <h2>The working</h2>
+  <p class="note">Everything on this page comes from these two tables. Each row is a period on a given rate. The three totals are the payments you'd make, the fees you'd pay, and what you'd still owe at the end — all converted to today's money so they can be added together. The route with the lower total is the cheaper one.</p>
+  <div class="ledger" id="ledger"></div>
+
+  <h2>Plain-English guide</h2>
+  <div class="guide">
+    <details><summary>What is a "basis point"?</summary><p>A hundredth of a percentage point. 25bp is 0.25%. 100bp is one whole percent. Rates people talk about "moving 40bp" moved by 0.4%.</p></details>
+    <details><summary>Where does a fixed mortgage rate actually come from?</summary><p>Your lender borrows the money it lends you. To offer a fixed rate for two years it locks in its own cost of money for two years, using a market called the swap market. Then it adds a markup to cover its costs, the capital it must hold, and profit.</p><p><span class="eg">Fixed mortgage rate = swap rate + lender's markup.</span> The swap rate is published every day by the Bank of England. Right now the two-year swap is about 4.2% and the average two-year mortgage is about 4.9%, so the markup is about 0.7%.</p></details>
+    <details><summary>What do you mean by "what the market prices"?</summary><p>If you know what it costs to lock in money for two years, and what it costs to lock in for four years, you can work out what the market is implying for the two years in between. That's arithmetic, not opinion. It's called the forward rate.</p><p>So when this page needs to know "what will a two-year fix cost in two years' time", it uses that forward rate plus the usual lender markup. It's the market's own price for the future — the same number a bank would use. It is not a forecast, and it can be wrong. The break-even tells you by how much it would need to be wrong to change your answer.</p></details>
+    <details><summary>What is "present value" and why does it matter?</summary><p>£100 in five years' time is worth less than £100 today, because you could use £100 today to pay down your mortgage and save interest on it. So before adding up payments made in different years, we shrink the later ones to what they're worth today. We shrink them at your mortgage rate — that's the return you'd get from paying the mortgage down instead.</p><p>Without this, a route that pushes cost into the future would look artificially cheap.</p></details>
+    <details><summary>Why include "the balance still owed at the end"?</summary><p>Different routes pay off the loan at different speeds. A lower rate pays off more of the balance each month. If we only counted payments, a route could look cheap simply by leaving you owing more at the end. Including what's still owed makes the comparison fair.</p></details>
+    <details><summary>What is the free "relock" option?</summary><p>Most lenders let you arrange your next deal up to six months before your current one ends. If a cheaper deal appears before your new one starts, you can switch to it instead. Since the 2023 Mortgage Charter this is standard practice at the big lenders.</p><p>That means you never lose by locking early. On Bank of England data since 2009, doing this saved about 0.25% on the rate on average, and saved something four times out of five. We credit 0.20% (after allowing for a bit of friction) — but only on deals you haven't taken yet, never on one you already hold. On a £250,000 five-year fix that's worth about £2,000, more than the typical fee.</p></details>
+    <details><summary>What is the lender's markup, and why 62bp?</summary><p>The gap between the swap rate and the mortgage rate. It's been roughly half a percent since 2022. Ten years ago it was over three percent — lenders have been competing much harder. We use the average of the last twelve months, and you can change it under Market inputs.</p><p>It matters less than you'd think. Since 2022, about nine-tenths of the movement in mortgage rates has been the swap rate moving, not the markup.</p></details>
+    <details><summary>What is an early repayment charge?</summary><p>A penalty for leaving a fixed deal early: a percentage of your balance, usually stepping down each year (for example 5%, 4%, 3%, 2%, 1%). Unlike the break costs banks charge each other, it doesn't change with interest rates — so when rates fall a lot, leaving can be cheap relative to the saving. This page works out whether it is.</p></details>
+    <details><summary>Why does "fee added to the loan" matter?</summary><p>Most people add the product fee to the mortgage rather than paying it upfront. It's convenient, but you then pay interest on it for the rest of the term — a £999 fee costs more than £999. The page includes that. Untick the box to see the difference.</p></details>
+    <details><summary>What's the standard variable rate?</summary><p>What your lender moves you onto if you do nothing when your deal ends. It's usually far higher than any fix on offer. The "if you do nothing" figure shows what inertia costs.</p></details>
+    <details><summary>What this page does not do</summary><p>It doesn't predict interest rates. If you believe rates will fall further than the market expects, the break-even tells you how much further they'd need to fall for the shorter fix to win.</p><p>It doesn't know your circumstances. If you might move house, want to overpay heavily, or need flexibility, a shorter fix buys that flexibility, and that isn't priced here.</p><p>It uses average rates at 75% loan-to-value. Your actual offer may be higher or lower; enter the rates you've actually been given.</p><p>It's a comparison of your own options against today's prices. It isn't advice, and it isn't a recommendation.</p></details>
+  </div>
+
+  <p class="prov">
+    <b>Where the numbers come from.</b> Quoted mortgage rates: Bank of England quoted household interest rates, 75% loan-to-value, monthly. Swap rates: Bank of England OIS spot curve, month average. Forward rates are read off that curve, not predicted. The lender spread is the trailing 12-month average of quoted rate minus matched swap, shown above and adjustable. The relock option is the measured average saving (2009–2026) from locking a new deal up to six months early and re-booking if rates fall. Cost is total cost of ownership over the horizon: payments, fees and the balance still owed at the end, all discounted at your marginal cost of money. This is a comparison of your own options against today's prices. It is not advice.
+  </p>
+</section>
+</main>
+
+<script>
+// Mortgage decision engine — JS port of engine.py. Rates in %, money GBP, time in months.
+const Engine = (() => {
+  const interp = (ois, t) => {
+    const ks = Object.keys(ois).map(Number).sort((a, b) => a - b);
+    if (t <= ks[0]) return ois[ks[0]];
+    if (t >= ks[ks.length - 1]) return ois[ks[ks.length - 1]];
+    let i = 0; while (ks[i + 1] < t) i++;
+    const a = ks[i], b = ks[i + 1];
+    return ois[a] + (ois[b] - ois[a]) * (t - a) / (b - a);
+  };
+  const forwardZero = (ois, start, tenor) => {
+    if (start <= 0) return interp(ois, tenor);
+    const a = start, b = start + tenor;
+    return (b * interp(ois, b) - a * interp(ois, a)) / (b - a);
+  };
+  const forwardMortgageRate = (m, start, tenor, relock = true) => {
+    let r = forwardZero(m.ois, start, tenor) + m.spreadBp / 100;
+    if (relock && m.applyRelock && start > 0) r -= Math.max(m.relockBp - m.relockFrictionBp, 0) / 100;
+    return r;
+  };
+  const annuity = (B, rate, n) => {
+    const r = rate / 1200;
+    if (n <= 0) return B;
+    if (Math.abs(r) < 1e-12) return B / n;
+    return B * r / (1 - Math.pow(1 + r, -n));
+  };
+  const annuityFactor = (rate, n) => { const r = rate / 1200; return Math.abs(r) < 1e-12 ? n : (1 - Math.pow(1 + r, -n)) / r; };
+  const disc = m => m.discountRate ?? m.quoted[5];
+
+  // leg: {rate, months, fee=0, feeAdded=true, upfront=0, label, fwd=false}
+  const simulate = (loan, legs, H, d, fill) => {
+    const dm = d / 1200;
+    let B = loan.balance, termLeft = loan.termMonths, t = 0, pvPay = 0, pvUp = 0, total = 0;
+    const pays = [], run = legs.slice(), sched = [];
+    const covered = legs.reduce((s, l) => s + l.months, 0);
+    if (covered < H) {
+      if (fill == null) throw new Error("legs do not cover horizon");
+      run.push({ rate: fill, months: H - covered, fee: 0, feeAdded: true, upfront: 0, label: "Reversion rate", fwd: false });
+    }
+    for (const leg of run) {
+      if (t >= H) break;
+      const fee = leg.fee || 0, up = leg.upfront || 0;
+      if (leg.feeAdded !== false) B += fee; else { pvUp += fee / Math.pow(1 + dm, t); total += fee; }
+      pvUp += up / Math.pow(1 + dm, t); total += up;
+      const pmt = annuity(B, leg.rate, termLeft); pays.push(pmt);
+      const r = leg.rate / 1200, n = Math.min(leg.months, H - t, termLeft);
+      for (let k = 0; k < n; k++) {
+        t++; const i = B * r; const p = Math.min(pmt - i, B); B -= p;
+        pvPay += pmt / Math.pow(1 + dm, t); total += pmt; sched.push({ t, pmt, B, rate: leg.rate });
+      }
+      termLeft -= n; if (termLeft <= 0) break;
+    }
+    const pvTerm = t > 0 ? B / Math.pow(1 + dm, t) : B;
+    return { tco: pvPay + pvUp + pvTerm, pvPayments: pvPay, pvUpfront: pvUp, pvTerminal: pvTerm, terminal: B, total, pays, legs: run, sched };
+  };
+  const shiftFwd = (legs, dl) => legs.map(l => l.fwd ? { ...l, rate: l.rate + dl } : l);
+  const bisect = (f, lo, hi, tol = 1e-7) => {
+    let flo = f(lo), fhi = f(hi);
+    if (flo * fhi > 0) return null;
+    for (let i = 0; i < 100; i++) { const mid = (lo + hi) / 2, fm = f(mid); if (Math.abs(fm) < tol || (hi - lo) < tol) return mid; if (flo * fm < 0) { hi = mid; fhi = fm; } else { lo = mid; flo = fm; } }
+    return (lo + hi) / 2;
+  };
+  const compare = (loan, A, B, H, m) => {
+    const d = disc(m), ra = simulate(loan, A, H, d, m.svr), rb = simulate(loan, B, H, d, m.svr);
+    const adv = ra.tco - rb.tco;
+    let be = null, beOn = null;
+    if (B.some(l => l.fwd)) { beOn = "B"; be = bisect(dl => ra.tco - simulate(loan, shiftFwd(B, dl), H, d, m.svr).tco, -10, 10); }
+    else if (A.some(l => l.fwd)) { beOn = "A"; be = bisect(dl => simulate(loan, shiftFwd(A, dl), H, d, m.svr).tco - rb.tco, -10, 10); }
+    return { ra, rb, advantageB: adv, perMonth: adv / annuityFactor(d, H), breakevenBp: be == null ? null : be * 100, beOn, H };
+  };
+  const chain = (m, first, tenors, fee, feeAdded = true, upfront = 0) => {
+    const legs = [first]; let start = first.months / 12;
+    for (const ty of tenors) {
+      legs.push({ rate: forwardMortgageRate(m, start, ty), months: ty * 12, fee, feeAdded, upfront, label: `${ty}y fix from year ${start.toFixed(1)}`, fwd: true });
+      start += ty;
+    }
+    return legs;
+  };
+  const ercNow = (B, sched, monthsIn) => { if (!sched || !sched.length) return 0; const y = Math.min(Math.floor(monthsIn / 12), sched.length - 1); return B * sched[y] / 100; };
+  const breakevenSwitchRate = (loan, stay, offer, erc, H, m) => {
+    const d = disc(m), ra = simulate(loan, stay, H, d, m.svr);
+    return bisect(rate => ra.tco - simulate(loan, [{ ...offer, rate, upfront: (offer.upfront || 0) + erc }], H, d, m.svr).tco, 0.01, 20);
+  };
+  const paymentShock = (loan, curRate, monthsLeft, m, newFixYears = 2) => {
+    const now = annuity(loan.balance, curRate, loan.termMonths);
+    let B = loan.balance; const r = curRate / 1200;
+    for (let k = 0; k < monthsLeft; k++) B -= (now - B * r);
+    const term = loan.termMonths - monthsLeft;
+    const fwd = forwardMortgageRate(m, monthsLeft / 12, newFixYears, false), fwdR = forwardMortgageRate(m, monthsLeft / 12, newFixYears, true);
+    return { now, balance: B, fwd, fwdRelock: fwdR, payFwd: annuity(B, fwd, term), payFwdRelock: annuity(B, fwdR, term), paySvr: annuity(B, m.svr, term), payQuoted: annuity(B, m.quoted[newFixYears], term) };
+  };
+  const relockValue = (loan, fixYears, m, monthsUntil = 0) => {
+    const net = Math.max(m.relockBp - m.relockFrictionBp, 0), rHi = m.quoted[fixYears], rLo = rHi - net / 100, n = fixYears * 12, term = loan.termMonths - monthsUntil;
+    const pHi = annuity(loan.balance, rHi, term), pLo = annuity(loan.balance, rLo, term), sav = pHi - pLo;
+    const roll = (rate, pmt) => { let b = loan.balance, rr = rate / 1200; for (let k = 0; k < n; k++) b -= (pmt - b * rr); return b; };
+    const termDiff = roll(rHi, pHi) - roll(rLo, pLo), dm = disc(m) / 1200;
+    let pv = 0; for (let t = 1; t <= n; t++) pv += sav / Math.pow(1 + dm, t); pv += termDiff / Math.pow(1 + dm, n);
+    return { netBp: net, perMonth: sav, undiscounted: sav * n + termDiff, pv };
+  };
+  return { forwardZero, forwardMortgageRate, annuity, simulate, compare, chain, ercNow, breakevenSwitchRate, paymentShock, relockValue, disc };
+})();
+
+</script>
+<script>
+(() => {
+  const $ = id => document.getElementById(id);
+  const num = id => parseFloat($(id).value);
+  const gbp = x => (x < 0 ? "−" : "") + "£" + Math.abs(Math.round(x)).toLocaleString("en-GB");
+  const pct = x => x.toFixed(2) + "%";
+  const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let mode = "A";
+
+  const ids = ["bal","term","cur","left","into","erc","o2","o5","fee","oth","feeAdded","hz","q2","q3","q5","svr","s1","s2","s3","s4","s5","s7","s10","spr","rl","fr","applyRl","dr"];
+  const load = () => { try { const s = JSON.parse(localStorage.getItem("mp-inputs") || "null"); if (!s) return; for (const k of ids) { if (!(k in s)) continue; const el = $(k); if (el.type === "checkbox") el.checked = s[k]; else el.value = s[k]; } if (s.mode) mode = s.mode; } catch (e) {} };
+  const save = () => { try { const s = { mode }; for (const k of ids) { const el = $(k); s[k] = el.type === "checkbox" ? el.checked : el.value; } localStorage.setItem("mp-inputs", JSON.stringify(s)); } catch (e) {} };
+
+  const market = () => ({
+    ois: {1:num("s1"),2:num("s2"),3:num("s3"),4:num("s4"),5:num("s5"),7:num("s7"),10:num("s10")},
+    quoted: {2:num("q2"),3:num("q3"),5:num("q5")},
+    spreadBp: num("spr"), svr: num("svr"), relockBp: num("rl"), relockFrictionBp: num("fr"),
+    applyRelock: $("applyRl").checked, discountRate: $("dr").value === "" ? null : num("dr")
+  });
+
+  const tween = (el, to, fmt) => {
+    const from = parseFloat(el.dataset.v || "0"); el.dataset.v = to;
+    if (reduced || !isFinite(from)) { el.textContent = fmt(to); return; }
+    const t0 = performance.now(), dur = 380;
+    const step = now => { const k = Math.min(1, (now - t0) / dur), e = 1 - Math.pow(1 - k, 3); el.textContent = fmt(from + (to - from) * e); if (k < 1) requestAnimationFrame(step); };
+    requestAnimationFrame(step);
+  };
+
+  const fig = (cls, v, l, s, fmt, why) => { const d = document.createElement("div"); d.className = "fig " + cls; d.innerHTML = `<div class="l">${l}</div><div class="v"></div>${s ? `<div class="s">${s}</div>` : ""}${why ? `<details><summary>What this means</summary><p>${why}</p></details>` : ""}`; tween(d.querySelector(".v"), v, fmt); return d; };
+
+  const monthsLabel = (m0, h) => { const d = new Date(2026, 7 + m0 + h, 1); return d.toLocaleString("en-GB", { month: "short", year: "numeric" }); };
+
+  const drawChart = (routes, H) => {
+    const svg = $("svg"), W = 900, Hh = 320, pl = 62, pr = 16, pt = 18, pb = 34;
+    const all = routes.flatMap(r => r.sched.map(p => p.pmt));
+    const lo = Math.floor(Math.min(...all) / 100) * 100 - 50, hi = Math.ceil(Math.max(...all) / 100) * 100 + 50;
+    const x = t => pl + (W - pl - pr) * t / H, y = v => pt + (Hh - pt - pb) * (1 - (v - lo) / (hi - lo));
+    let g = "";
+    const ticks = 5; for (let i = 0; i <= ticks; i++) { const v = lo + (hi - lo) * i / ticks; g += `<line x1="${pl}" x2="${W - pr}" y1="${y(v)}" y2="${y(v)}" stroke="var(--line)" stroke-width="1"/><text x="${pl - 8}" y="${y(v) + 4}" text-anchor="end" font-size="12" fill="var(--muted)">£${Math.round(v).toLocaleString()}</text>`; }
+    for (let m = 0; m <= H; m += 12) g += `<text x="${x(m)}" y="${Hh - 10}" text-anchor="middle" font-size="12" fill="var(--muted)">${m === 0 ? "now" : "yr " + m / 12}</text>`;
+    for (const r of routes) {
+      let d = `M ${x(0)} ${y(r.sched[0].pmt)}`; let prev = r.sched[0].pmt;
+      r.sched.forEach(p => { if (p.pmt !== prev) { d += ` L ${x(p.t - 1)} ${y(prev)} L ${x(p.t - 1)} ${y(p.pmt)}`; prev = p.pmt; } });
+      d += ` L ${x(r.sched[r.sched.length - 1].t)} ${y(prev)}`;
+      g += `<path d="${d}" fill="none" stroke="${r.color}" stroke-width="${r.w || 2.5}" stroke-dasharray="${r.dash || ""}" stroke-linejoin="round"/>`;
+    }
+    svg.innerHTML = g;
+    $("legend").innerHTML = routes.map(r => `<span><i style="background:${r.color}"></i>${r.name}</span>`).join("");
+  };
+
+  const ledgerTable = (title, res, totalCls) => {
+    let h = `<table><thead><tr><th>${title}</th><th>Rate</th><th>Months</th><th>Payment</th><th>Fee / costs</th></tr></thead><tbody>`;
+    res.legs.forEach((l, i) => { if (i >= res.pays.length) return; const c = (l.fee || 0) + (l.upfront || 0); h += `<tr><td>${l.label || ""}${l.fwd ? ' <span style="color:var(--market)">(from the curve)</span>' : ""}</td><td>${pct(l.rate)}</td><td>${l.months}</td><td>${gbp(res.pays[i])}</td><td class="${c ? "cost" : ""}">${c ? gbp(c) : "—"}</td></tr>`; });
+    h += `<tr><td>Payments, present value</td><td></td><td></td><td colspan="2">${gbp(res.pvPayments)}</td></tr>`;
+    h += `<tr><td>Fees and costs paid upfront, present value</td><td></td><td></td><td colspan="2">${gbp(res.pvUpfront)}</td></tr>`;
+    h += `<tr><td>Balance still owed at the end, present value</td><td></td><td></td><td colspan="2">${gbp(res.pvTerminal)} <span style="color:var(--muted)">(${gbp(res.terminal)} owed)</span></td></tr>`;
+    h += `<tr class="tot"><td>Total cost over the horizon</td><td></td><td></td><td colspan="2" class="${totalCls || ""}">${gbp(res.tco)}</td></tr></tbody></table>`;
+    return h;
+  };
+
+  let base = null;
+
+  const runA = () => {
+    const m = market(), loan = { balance: num("bal"), termMonths: Math.round(num("term") * 12) };
+    const H = parseInt($("hz").value), fee = num("fee"), oth = num("oth"), fa = $("feeAdded").checked, left = Math.max(0, Math.round(num("left")));
+    const yrs = H / 12;
+    const five = [{ rate: num("o5"), months: 60, fee, feeAdded: fa, upfront: oth, label: "Five-year fix at " + pct(num("o5")) }];
+    if (H > 60) five.push(...Engine.chain(m, five[0], H === 120 ? [5] : [], fee, fa, oth).slice(1));
+    const rest = H <= 24 ? [] : H === 36 ? [1] : H === 60 ? [2, 1] : [2, 2, 2, 2];
+    const two = Engine.chain(m, { rate: num("o2"), months: 24, fee, feeAdded: fa, upfront: oth, label: "Two-year fix at " + pct(num("o2")) }, rest, fee, fa, oth);
+    const c = Engine.compare(loan, five, two, H, m);
+    const ps = Engine.paymentShock(loan, num("cur"), left, m, 2);
+    const svrRoute = Engine.chain(m, { rate: m.svr, months: 24, fee: 0, label: "Standard variable rate " + pct(m.svr) }, rest, fee, fa, oth);
+    const inertia = Engine.compare(loan, svrRoute, five, H, m);
+    const rl2 = Engine.relockValue(loan, 2, m), rl5 = Engine.relockValue(loan, 5, m);
+    base = { c, two, five, loan, m, H };
+
+    const fiveWins = c.advantageB < 0, adv = Math.abs(c.advantageB), win = fiveWins ? "five-year" : "two-year", lose = fiveWins ? "two-year" : "five-year";
+    $("lead").innerHTML = `On today's market, the ${win} route is <b>${gbp(adv)}</b> cheaper over ${yrs} years.`;
+    if (c.breakevenBp != null) {
+      const fwd2 = Engine.forwardMortgageRate(m, 2, 2), beRate = fwd2 + c.breakevenBp / 100;
+      $("sub").innerHTML = fiveWins
+        ? `For the two-year route to win, two-year rates in ${monthsLabel(0, 24)} would need to be <em>${pct(beRate)} or lower</em> — ${Math.abs(c.breakevenBp).toFixed(0)}bp below what the market is pricing. That's about ${gbp(-c.perMonth)} a month of difference.`
+        : `The two-year route wins unless rates in ${monthsLabel(0, 24)} come in more than <em>${Math.abs(c.breakevenBp).toFixed(0)}bp above</em> the market's price of ${pct(fwd2)}. That's about ${gbp(c.perMonth)} a month of difference.`;
+    } else $("sub").textContent = "";
+
+    $("wiq").textContent = "What if two-year rates from " + monthsLabel(0, 24) + " end up different from what the market prices?";
+    whatIf();
+
+    const f = $("figs"); f.innerHTML = "";
+    f.append(
+      fig("cost", ps.payQuoted - ps.now, "Payment change at reversion", `${gbp(ps.now)} now, ${gbp(ps.payQuoted)} at today's two-year rate`, v => (v >= 0 ? "+" : "") + gbp(v) + "/mo",
+        `Your current deal ends in ${left} month${left === 1 ? "" : "s"}. This is how much more you'd pay each month if you moved onto today's average two-year rate, after your balance has come down as scheduled to ${gbp(ps.balance)}. It's the jump most people are bracing for.`),
+      fig("cost", ps.paySvr - ps.now, "If you do nothing", `${gbp(ps.paySvr)}/mo on the variable rate. ${gbp(inertia.advantageB)} dearer over ${yrs} years than the five-year fix`, v => "+" + gbp(v) + "/mo",
+        `If you let the deal end without arranging a new one, your lender moves you to its standard variable rate of ${pct(m.svr)}. Over ${yrs} years, that path costs ${gbp(inertia.advantageB)} more than taking the five-year fix now — the price of doing nothing.`),
+      fig("money", fiveWins ? rl5.pv : rl2.pv, "Free relock option, present value", `Lock now, re-book if rates fall before it starts. Worth ~${rl5.netBp}bp; more than the ${gbp(fee)} fee`, gbp,
+        `You can arrange your next deal up to six months before this one ends, and if a cheaper deal appears in the meantime, switch to it. It costs nothing, so you should always lock early. Historically it has been worth about a quarter of a percent on the rate. This is what that's worth on your loan, in today's money.`),
+      fig("market", Engine.forwardMortgageRate(m, 2, 2, false), "Market-implied two-year rate in two years", `Swap ${pct(Engine.forwardZero(m.ois, 2, 2))} plus ${m.spreadBp}bp spread`, pct,
+        `Today's swap rates imply where the market expects two-year rates to be in two years' time. Add the lender's usual markup and you get the mortgage rate the two-year route assumes you'd refinance at. It's the market's price, not our opinion — the same number a bank would use. It can be wrong; the break-even above shows by how much it would need to be.`)
+    );
+
+    $("chartTitle").textContent = "Monthly payment, each route";
+    const svrRes = Engine.simulate(loan, svrRoute, H, Engine.disc(m), m.svr);
+    drawChart([
+      { name: "Five-year fix", sched: c.ra.sched, color: "var(--money)" },
+      { name: "Two-year then refinance at the market's forward rates", sched: c.rb.sched, color: "var(--market)" },
+      { name: "Do nothing (variable rate, then refinance)", sched: svrRes.sched, color: "var(--cost)", dash: "6 5", w: 2 }
+    ], H);
+    $("ledger").innerHTML = ledgerTable("Five-year route", c.ra, fiveWins ? "money" : "") + "<br>" + ledgerTable("Two-year route", c.rb, fiveWins ? "" : "money");
+  };
+
+  const runB = () => {
+    const m = market(), loan = { balance: num("bal"), termMonths: Math.round(num("term") * 12) };
+    const H = parseInt($("hz").value), fee = num("fee"), oth = num("oth"), fa = $("feeAdded").checked;
+    const left = Math.max(1, Math.round(num("left"))), into = Math.max(0, Math.round(num("into")));
+    const sched = $("erc").value.split(",").map(s => parseFloat(s)).filter(x => isFinite(x));
+    const erc = Engine.ercNow(loan.balance, sched, into), cur = num("cur"), off = num("o5");
+    const stayShort = [{ rate: cur, months: left, label: "Stay at " + pct(cur) + " to the end of the fix" }];
+    const offer = { rate: off, months: 60, fee, feeAdded: fa, upfront: oth, label: "Break now, five-year fix at " + pct(off) };
+    const sw = [{ ...offer, upfront: oth + erc, label: offer.label }];
+    const cS = Engine.compare(loan, stayShort, sw, left, m);
+    const beRate = Engine.breakevenSwitchRate(loan, stayShort, offer, erc, left, m);
+    const rest = H <= left ? [] : [2, 1, 2, 2, 2, 2].reduce((acc, ty) => (acc.reduce((s, x) => s + x, 0) * 12 + left < H ? [...acc, ty] : acc), []);
+    const stayLong = Engine.chain(m, stayShort[0], rest, fee, fa, oth);
+    const cL = Engine.compare(loan, stayLong, sw, H, m);
+    base = { c: cL, loan, m, H, sw, stayLong, cS };
+
+    const stayWins = cS.advantageB < 0;
+    $("lead").innerHTML = stayWins
+      ? `Staying is <b>${gbp(-cS.advantageB)}</b> cheaper than breaking now, to the end of your fix.`
+      : `Breaking now is <b>${gbp(cS.advantageB)}</b> cheaper than staying, to the end of your fix.`;
+    const beTxt = beRate == null ? `No offer rate would make breaking pay before your fix ends — the charge outweighs any saving over ${left} months.` : `Your offer would need to be <em>${pct(beRate)}</em> for breaking to be neutral — it is ${Math.abs((beRate - off) * 100).toFixed(0)}bp ${beRate > off ? "better than" : "away from"} that.`;
+    $("sub").innerHTML = beTxt + ` Over ${H / 12} years, with the stay route refinancing at the market's forward rates afterwards, ${cL.advantageB < 0 ? "staying" : "breaking"} is ${gbp(Math.abs(cL.advantageB))} cheaper.`;
+
+    $("wiq").textContent = "What if the rates you refinance at after your fix ends are different from what the market prices?";
+    whatIf();
+
+    const f = $("figs"); f.innerHTML = "";
+    f.append(
+      fig("cost", erc, "Early repayment charge today", `${sched[Math.min(Math.floor(into / 12), sched.length - 1)] || 0}% of balance, year ${Math.floor(into / 12) + 1} of the fix`, gbp,
+        `What your lender charges you to leave the fix early. It's a fixed percentage of your balance, so it doesn't change when rates move. This is the hurdle any saving from switching has to clear.`),
+      fig("market", beRate == null ? 0 : beRate, "Break-even offer rate", beRate == null ? "None: no rate pays for the charge before the fix ends" : "The rate at which paying the charge exactly pays for itself", v => beRate == null ? "—" : pct(v),
+        `If your offer were exactly this rate, the interest you'd save by the end of your current fix would exactly cover the charge and the fee. An offer below it means breaking pays; above it, staying is cheaper. Compare it to the ${pct(off)} you've been offered.`),
+      fig(cL.advantageB < 0 ? "money" : "cost", Math.abs(cL.advantageB), (cL.advantageB < 0 ? "Staying" : "Breaking") + " is cheaper over " + H / 12 + " years by", cL.breakevenBp != null ? `Flips if the stay route's future rates are ${cL.breakevenBp > 0 ? "+" : ""}${cL.breakevenBp.toFixed(0)}bp vs the market` : "", gbp,
+        `The headline only looks to the end of your current fix. This looks further: if you stay, you'll refinance when the fix ends, so we assume you do that at the market's implied rates. If you break now, you hold the new fix for its full five years. This is the fairer, longer comparison.`),
+      fig("money", Engine.annuity(loan.balance, cur, loan.termMonths) - Engine.annuity(loan.balance + (fa ? fee : 0), off, loan.termMonths), "Monthly saving if you break", `${gbp(Engine.annuity(loan.balance, cur, loan.termMonths))} now vs ${gbp(Engine.annuity(loan.balance + (fa ? fee : 0), off, loan.termMonths))} on the offer`, v => gbp(v) + "/mo",
+        `This is the number that feels good — a lower payment from next month. But the charge and fee have to be paid back out of it, and only ${left} months of the saving arrive before your fix would have ended anyway. That's why the headline can say "stay" even when this says "save".`)
+    );
+
+    $("chartTitle").textContent = "Monthly payment: stay vs break now";
+    drawChart([
+      { name: "Stay, then refinance at the market's forward rates", sched: cL.ra.sched, color: "var(--market)" },
+      { name: "Break now, five-year fix", sched: cL.rb.sched, color: "var(--money)" }
+    ], H);
+    $("ledger").innerHTML = ledgerTable("Stay to the end of the fix, then refinance", cL.ra, cL.advantageB < 0 ? "money" : "") + "<br>" + ledgerTable("Break now", cL.rb, cL.advantageB < 0 ? "" : "money");
+  };
+
+  const whatIf = () => {
+    if (!base) return;
+    const dl = parseInt($("wi").value); $("wiv").textContent = (dl >= 0 ? "+" : "−") + Math.abs(dl) + "bp";
+    const { loan, m, H } = base, d = Engine.disc(m);
+    const shift = legs => legs.map(l => l.fwd ? { ...l, rate: l.rate + dl / 100 } : l);
+    let adv, txt;
+    if (mode === "A") { const ra = Engine.simulate(loan, base.five, H, d, m.svr), rb = Engine.simulate(loan, shift(base.two), H, d, m.svr); adv = ra.tco - rb.tco; txt = adv < 0 ? `The five-year route is <b>${gbp(-adv)}</b> cheaper.` : `The two-year route is <b>${gbp(adv)}</b> cheaper.`; }
+    else { const ra = Engine.simulate(loan, shift(base.stayLong), H, d, m.svr), rb = Engine.simulate(loan, base.sw, H, d, m.svr); adv = ra.tco - rb.tco; txt = adv < 0 ? `Staying is <b>${gbp(-adv)}</b> cheaper over ${H / 12} years.` : `Breaking now is <b class="cost">${gbp(adv)}</b> cheaper over ${H / 12} years.`; }
+    $("wia").innerHTML = (dl === 0 ? "At the market's own price: " : `If those rates come in ${Math.abs(dl)}bp ${dl > 0 ? "higher" : "lower"}: `) + txt;
+  };
+
+  const presets = { A: { bal: 250000, term: 23, cur: 1.99, left: 4, into: 35 }, B: { bal: 200000, term: 22, cur: 5.5, left: 25, into: 35 } };
+  const matches = p => Object.keys(p).every(k => parseFloat($(k).value) === p[k]);
+  const apply = p => Object.keys(p).forEach(k => $(k).value = p[k]);
+  const LENDERS = [{"lender": "Nationwide", "as_of": "2026-09-15", "segment": "remortgage", "ltv_max": 60, "fix_years": 2, "rate": 5.01, "fee": 1499.0, "source": "nationwide-intermediary.co.uk product guide F6 (15.09.2026)", "confidence": "full-sheet", "erc": "2/1", "svr": 6.49}, {"lender": "Nationwide", "as_of": "2026-09-15", "segment": "remortgage", "ltv_max": 60, "fix_years": 2, "rate": 5.06, "fee": 999.0, "source": "nationwide-intermediary.co.uk product guide F6 (15.09.2026)", "confidence": "full-sheet", "erc": "2/1", "svr": 6.49}, {"lender": "Nationwide", "as_of": "2026-09-15", "segment": "remortgage", "ltv_max": 60, "fix_years": 2, "rate": 5.34, "fee": 0.0, "source": "nationwide-intermediary.co.uk product guide F6 (15.09.2026)", "confidence": "full-sheet", "erc": "2/1", "svr": 6.49}, {"lender": "Nationwide", "as_of": "2026-09-15", "segment": "remortgage", "ltv_max": 60, "fix_years": 3, "rate": 5.06, "fee": 999.0, "source": "nationwide-intermediary.co.uk product guide F6 (15.09.2026)", "confidence": "full-sheet", "erc": "3/2/1", "svr": 6.49}, {"lender": "Nationwide", "as_of": "2026-09-15", "segment": "remortgage", "ltv_max": 60, "fix_years": 3, "rate": 5.34, "fee": 0.0, "source": "nationwide-intermediary.co.uk product guide F6 (15.09.2026)", "confidence": "full-sheet", "erc": "3/2/1", "svr": 6.49}, {"lender": "Nationwide", "as_of": "2026-09-15", "segment": "remortgage", "ltv_max": 60, "fix_years": 5, "rate": 5.04, "fee": 1499.0, "source": "nationwide-intermediary.co.uk product guide F6 (15.09.2026)", "confidence": "full-sheet", "erc": "5/4/3/2/1", "svr": 6.49}, {"lender": "Nationwide", "as_of": "2026-09-15", "segment": "remortgage", "ltv_max": 60, "fix_years": 5, "rate": 5.09, "fee": 999.0, "source": "nationwide-intermediary.co.uk product guide F6 (15.09.2026)", "confidence": "full-sheet", "erc": "5/4/3/2/1", "svr": 6.49}, {"lender": "Nationwide", "as_of": "2026-09-15", "segment": "remortgage", "ltv_max": 60, "fix_years": 5, "rate": 5.19, "fee": 0.0, "source": "nationwide-intermediary.co.uk product guide F6 (15.09.2026)", "confidence": "full-sheet", "erc": "5/4/3/2/1", "svr": 6.49}, {"lender": "Nationwide", "as_of": "2026-09-15", "segment": "remortgage", "ltv_max": 60, "fix_years": 10, "rate": 5.24, "fee": 999.0, "source": "nationwide-intermediary.co.uk product guide F6 (15.09.2026)", "confidence": "full-sheet", "erc": "6x5,5,4,3,2,1", "svr": 6.49}, {"lender": "Nationwide", "as_of": "2026-09-15", "segment": "remortgage", "ltv_max": 60, "fix_years": 10, "rate": 5.34, "fee": 0.0, "source": "nationwide-intermediary.co.uk product guide F6 (15.09.2026)", "confidence": "full-sheet", "erc": "6x5,5,4,3,2,1", "svr": 6.49}, {"lender": "Nationwide", "as_of": "2026-09-15", "segment": "remortgage", "ltv_max": 75, "fix_years": 2, "rate": 5.06, "fee": 1499.0, "source": "nationwide-intermediary.co.uk product guide F6 (15.09.2026)", "confidence": "full-sheet", "erc": "2/1", "svr": 6.49}, {"lender": "Nationwide", "as_of": "2026-09-15", "segment": "remortgage", "ltv_max": 75, "fix_years": 2, "rate": 5.11, "fee": 999.0, "source": "nationwide-intermediary.co.uk product guide F6 (15.09.2026)", "confidence": "full-sheet", "erc": "2/1", "svr": 6.49}, {"lender": "Nationwide", "as_of": "2026-09-15", "segment": "remortgage", "ltv_max": 75, "fix_years": 2, "rate": 5.42, "fee": 0.0, "source": "nationwide-intermediary.co.uk product guide F6 (15.09.2026)", "confidence": "full-sheet", "erc": "2/1", "svr": 6.49}, {"lender": "Nationwide", "as_of": "2026-09-15", "segment": "remortgage", "ltv_max": 75, "fix_years": 3, "rate": 5.11, "fee": 999.0, "source": "nationwide-intermediary.co.uk product guide F6 (15.09.2026)", "confidence": "full-sheet", "erc": "3/2/1", "svr": 6.49}, {"lender": "Nationwide", "as_of": "2026-09-15", "segment": "remortgage", "ltv_max": 75, "fix_years": 3, "rate": 5.42, "fee": 0.0, "source": "nationwide-intermediary.co.uk product guide F6 (15.09.2026)", "confidence": "full-sheet", "erc": "3/2/1", "svr": 6.49}, {"lender": "Nationwide", "as_of": "2026-09-15", "segment": "remortgage", "ltv_max": 75, "fix_years": 5, "rate": 5.14, "fee": 1499.0, "source": "nationwide-intermediary.co.uk product guide F6 (15.09.2026)", "confidence": "full-sheet", "erc": "5/4/3/2/1", "svr": 6.49}, {"lender": "Nationwide", "as_of": "2026-09-15", "segment": "remortgage", "ltv_max": 75, "fix_years": 5, "rate": 5.19, "fee": 999.0, "source": "nationwide-intermediary.co.uk product guide F6 (15.09.2026)", "confidence": "full-sheet", "erc": "5/4/3/2/1", "svr": 6.49}, {"lender": "Nationwide", "as_of": "2026-09-15", "segment": "remortgage", "ltv_max": 75, "fix_years": 5, "rate": 5.29, "fee": 0.0, "source": "nationwide-intermediary.co.uk product guide F6 (15.09.2026)", "confidence": "full-sheet", "erc": "5/4/3/2/1", "svr": 6.49}, {"lender": "Nationwide", "as_of": "2026-09-15", "segment": "remortgage", "ltv_max": 75, "fix_years": 10, "rate": 5.29, "fee": 999.0, "source": "nationwide-intermediary.co.uk product guide F6 (15.09.2026)", "confidence": "full-sheet", "erc": "6x5,5,4,3,2,1", "svr": 6.49}, {"lender": "Nationwide", "as_of": "2026-09-15", "segment": "remortgage", "ltv_max": 75, "fix_years": 10, "rate": 5.44, "fee": 0.0, "source": "nationwide-intermediary.co.uk product guide F6 (15.09.2026)", "confidence": "full-sheet", "erc": "6x5,5,4,3,2,1", "svr": 6.49}, {"lender": "Nationwide", "as_of": "2026-09-15", "segment": "remortgage", "ltv_max": 80, "fix_years": 2, "rate": 5.19, "fee": 1499.0, "source": "nationwide-intermediary.co.uk product guide F6 (15.09.2026)", "confidence": "full-sheet", "erc": "2/1", "svr": 6.49}, {"lender": "Nationwide", "as_of": "2026-09-15", "segment": "remortgage", "ltv_max": 80, "fix_years": 2, "rate": 5.24, "fee": 999.0, "source": "nationwide-intermediary.co.uk product guide F6 (15.09.2026)", "confidence": "full-sheet", "erc": "2/1", "svr": 6.49}, {"lender": "Nationwide", "as_of": "2026-09-15", "segment": "remortgage", "ltv_max": 80, "fix_years": 2, "rate": 5.43, "fee": 0.0, "source": "nationwide-intermediary.co.uk product guide F6 (15.09.2026)", "confidence": "full-sheet", "erc": "2/1", "svr": 6.49}, {"lender": "Nationwide", "as_of": "2026-09-15", "segment": "remortgage", "ltv_max": 80, "fix_years": 3, "rate": 5.24, "fee": 999.0, "source": "nationwide-intermediary.co.uk product guide F6 (15.09.2026)", "confidence": "full-sheet", "erc": "3/2/1", "svr": 6.49}, {"lender": "Nationwide", "as_of": "2026-09-15", "segment": "remortgage", "ltv_max": 80, "fix_years": 3, "rate": 5.46, "fee": 0.0, "source": "nationwide-intermediary.co.uk product guide F6 (15.09.2026)", "confidence": "full-sheet", "erc": "3/2/1", "svr": 6.49}, {"lender": "Nationwide", "as_of": "2026-09-15", "segment": "remortgage", "ltv_max": 80, "fix_years": 5, "rate": 5.24, "fee": 1499.0, "source": "nationwide-intermediary.co.uk product guide F6 (15.09.2026)", "confidence": "full-sheet", "erc": "5/4/3/2/1", "svr": 6.49}, {"lender": "Nationwide", "as_of": "2026-09-15", "segment": "remortgage", "ltv_max": 80, "fix_years": 5, "rate": 5.29, "fee": 999.0, "source": "nationwide-intermediary.co.uk product guide F6 (15.09.2026)", "confidence": "full-sheet", "erc": "5/4/3/2/1", "svr": 6.49}, {"lender": "Nationwide", "as_of": "2026-09-15", "segment": "remortgage", "ltv_max": 80, "fix_years": 5, "rate": 5.34, "fee": 0.0, "source": "nationwide-intermediary.co.uk product guide F6 (15.09.2026)", "confidence": "full-sheet", "erc": "5/4/3/2/1", "svr": 6.49}, {"lender": "Nationwide", "as_of": "2026-09-15", "segment": "remortgage", "ltv_max": 80, "fix_years": 10, "rate": 5.74, "fee": 999.0, "source": "nationwide-intermediary.co.uk product guide F6 (15.09.2026)", "confidence": "full-sheet", "erc": "6x5,5,4,3,2,1", "svr": 6.49}, {"lender": "Nationwide", "as_of": "2026-09-15", "segment": "remortgage", "ltv_max": 80, "fix_years": 10, "rate": 5.94, "fee": 0.0, "source": "nationwide-intermediary.co.uk product guide F6 (15.09.2026)", "confidence": "full-sheet", "erc": "6x5,5,4,3,2,1", "svr": 6.49}, {"lender": "Nationwide", "as_of": "2026-09-15", "segment": "remortgage", "ltv_max": 85, "fix_years": 2, "rate": 5.19, "fee": 1499.0, "source": "nationwide-intermediary.co.uk product guide F6 (15.09.2026)", "confidence": "full-sheet", "erc": "2/1", "svr": 6.49}, {"lender": "Nationwide", "as_of": "2026-09-15", "segment": "remortgage", "ltv_max": 85, "fix_years": 2, "rate": 5.24, "fee": 999.0, "source": "nationwide-intermediary.co.uk product guide F6 (15.09.2026)", "confidence": "full-sheet", "erc": "2/1", "svr": 6.49}, {"lender": "Nationwide", "as_of": "2026-09-15", "segment": "remortgage", "ltv_max": 85, "fix_years": 2, "rate": 5.43, "fee": 0.0, "source": "nationwide-intermediary.co.uk product guide F6 (15.09.2026)", "confidence": "full-sheet", "erc": "2/1", "svr": 6.49}, {"lender": "Nationwide", "as_of": "2026-09-15", "segment": "remortgage", "ltv_max": 85, "fix_years": 3, "rate": 5.27, "fee": 999.0, "source": "nationwide-intermediary.co.uk product guide F6 (15.09.2026)", "confidence": "full-sheet", "erc": "3/2/1", "svr": 6.49}, {"lender": "Nationwide", "as_of": "2026-09-15", "segment": "remortgage", "ltv_max": 85, "fix_years": 3, "rate": 5.46, "fee": 0.0, "source": "nationwide-intermediary.co.uk product guide F6 (15.09.2026)", "confidence": "full-sheet", "erc": "3/2/1", "svr": 6.49}, {"lender": "Nationwide", "as_of": "2026-09-15", "segment": "remortgage", "ltv_max": 85, "fix_years": 5, "rate": 5.24, "fee": 1499.0, "source": "nationwide-intermediary.co.uk product guide F6 (15.09.2026)", "confidence": "full-sheet", "erc": "5/4/3/2/1", "svr": 6.49}, {"lender": "Nationwide", "as_of": "2026-09-15", "segment": "remortgage", "ltv_max": 85, "fix_years": 5, "rate": 5.29, "fee": 999.0, "source": "nationwide-intermediary.co.uk product guide F6 (15.09.2026)", "confidence": "full-sheet", "erc": "5/4/3/2/1", "svr": 6.49}, {"lender": "Nationwide", "as_of": "2026-09-15", "segment": "remortgage", "ltv_max": 85, "fix_years": 5, "rate": 5.34, "fee": 0.0, "source": "nationwide-intermediary.co.uk product guide F6 (15.09.2026)", "confidence": "full-sheet", "erc": "5/4/3/2/1", "svr": 6.49}, {"lender": "Nationwide", "as_of": "2026-09-15", "segment": "remortgage", "ltv_max": 85, "fix_years": 10, "rate": 5.74, "fee": 999.0, "source": "nationwide-intermediary.co.uk product guide F6 (15.09.2026)", "confidence": "full-sheet", "erc": "6x5,5,4,3,2,1", "svr": 6.49}, {"lender": "Nationwide", "as_of": "2026-09-15", "segment": "remortgage", "ltv_max": 85, "fix_years": 10, "rate": 5.94, "fee": 0.0, "source": "nationwide-intermediary.co.uk product guide F6 (15.09.2026)", "confidence": "full-sheet", "erc": "6x5,5,4,3,2,1", "svr": 6.49}, {"lender": "Nationwide", "as_of": "2026-09-15", "segment": "remortgage", "ltv_max": 90, "fix_years": 2, "rate": 5.44, "fee": 1499.0, "source": "nationwide-intermediary.co.uk product guide F6 (15.09.2026)", "confidence": "full-sheet", "erc": "2/1", "svr": 6.49}, {"lender": "Nationwide", "as_of": "2026-09-15", "segment": "remortgage", "ltv_max": 90, "fix_years": 2, "rate": 5.49, "fee": 999.0, "source": "nationwide-intermediary.co.uk product guide F6 (15.09.2026)", "confidence": "full-sheet", "erc": "2/1", "svr": 6.49}, {"lender": "Nationwide", "as_of": "2026-09-15", "segment": "remortgage", "ltv_max": 90, "fix_years": 2, "rate": 5.68, "fee": 0.0, "source": "nationwide-intermediary.co.uk product guide F6 (15.09.2026)", "confidence": "full-sheet", "erc": "2/1", "svr": 6.49}, {"lender": "Nationwide", "as_of": "2026-09-15", "segment": "remortgage", "ltv_max": 90, "fix_years": 3, "rate": 5.47, "fee": 999.0, "source": "nationwide-intermediary.co.uk product guide F6 (15.09.2026)", "confidence": "full-sheet", "erc": "3/2/1", "svr": 6.49}, {"lender": "Nationwide", "as_of": "2026-09-15", "segment": "remortgage", "ltv_max": 90, "fix_years": 3, "rate": 5.69, "fee": 0.0, "source": "nationwide-intermediary.co.uk product guide F6 (15.09.2026)", "confidence": "full-sheet", "erc": "3/2/1", "svr": 6.49}, {"lender": "Nationwide", "as_of": "2026-09-15", "segment": "remortgage", "ltv_max": 90, "fix_years": 5, "rate": 5.35, "fee": 1499.0, "source": "nationwide-intermediary.co.uk product guide F6 (15.09.2026)", "confidence": "full-sheet", "erc": "5/4/3/2/1", "svr": 6.49}, {"lender": "Nationwide", "as_of": "2026-09-15", "segment": "remortgage", "ltv_max": 90, "fix_years": 5, "rate": 5.4, "fee": 999.0, "source": "nationwide-intermediary.co.uk product guide F6 (15.09.2026)", "confidence": "full-sheet", "erc": "5/4/3/2/1", "svr": 6.49}, {"lender": "Nationwide", "as_of": "2026-09-15", "segment": "remortgage", "ltv_max": 90, "fix_years": 5, "rate": 5.48, "fee": 0.0, "source": "nationwide-intermediary.co.uk product guide F6 (15.09.2026)", "confidence": "full-sheet", "erc": "5/4/3/2/1", "svr": 6.49}, {"lender": "Nationwide", "as_of": "2026-09-15", "segment": "remortgage", "ltv_max": 90, "fix_years": 10, "rate": 5.84, "fee": 999.0, "source": "nationwide-intermediary.co.uk product guide F6 (15.09.2026)", "confidence": "full-sheet", "erc": "6x5,5,4,3,2,1", "svr": 6.49}, {"lender": "Nationwide", "as_of": "2026-09-15", "segment": "remortgage", "ltv_max": 90, "fix_years": 10, "rate": 5.94, "fee": 0.0, "source": "nationwide-intermediary.co.uk product guide F6 (15.09.2026)", "confidence": "full-sheet", "erc": "6x5,5,4,3,2,1", "svr": 6.49}, {"lender": "Nationwide", "as_of": "2026-09-15", "segment": "remortgage", "ltv_max": 95, "fix_years": 2, "rate": 5.59, "fee": 1499.0, "source": "nationwide-intermediary.co.uk product guide F6 (15.09.2026)", "confidence": "full-sheet", "erc": "2/1", "svr": 6.49}, {"lender": "Nationwide", "as_of": "2026-09-15", "segment": "remortgage", "ltv_max": 95, "fix_years": 2, "rate": 5.64, "fee": 999.0, "source": "nationwide-intermediary.co.uk product guide F6 (15.09.2026)", "confidence": "full-sheet", "erc": "2/1", "svr": 6.49}, {"lender": "Nationwide", "as_of": "2026-09-15", "segment": "remortgage", "ltv_max": 95, "fix_years": 2, "rate": 5.74, "fee": 0.0, "source": "nationwide-intermediary.co.uk product guide F6 (15.09.2026)", "confidence": "full-sheet", "erc": "2/1", "svr": 6.49}, {"lender": "Nationwide", "as_of": "2026-09-15", "segment": "remortgage", "ltv_max": 95, "fix_years": 3, "rate": 5.64, "fee": 999.0, "source": "nationwide-intermediary.co.uk product guide F6 (15.09.2026)", "confidence": "full-sheet", "erc": "3/2/1", "svr": 6.49}, {"lender": "Nationwide", "as_of": "2026-09-15", "segment": "remortgage", "ltv_max": 95, "fix_years": 3, "rate": 5.74, "fee": 0.0, "source": "nationwide-intermediary.co.uk product guide F6 (15.09.2026)", "confidence": "full-sheet", "erc": "3/2/1", "svr": 6.49}, {"lender": "Nationwide", "as_of": "2026-09-15", "segment": "remortgage", "ltv_max": 95, "fix_years": 5, "rate": 5.58, "fee": 1499.0, "source": "nationwide-intermediary.co.uk product guide F6 (15.09.2026)", "confidence": "full-sheet", "erc": "5/4/3/2/1", "svr": 6.49}, {"lender": "Nationwide", "as_of": "2026-09-15", "segment": "remortgage", "ltv_max": 95, "fix_years": 5, "rate": 5.63, "fee": 999.0, "source": "nationwide-intermediary.co.uk product guide F6 (15.09.2026)", "confidence": "full-sheet", "erc": "5/4/3/2/1", "svr": 6.49}, {"lender": "Nationwide", "as_of": "2026-09-15", "segment": "remortgage", "ltv_max": 95, "fix_years": 5, "rate": 5.73, "fee": 0.0, "source": "nationwide-intermediary.co.uk product guide F6 (15.09.2026)", "confidence": "full-sheet", "erc": "5/4/3/2/1", "svr": 6.49}, {"lender": "Nationwide", "as_of": "2026-09-15", "segment": "existing-switch", "ltv_max": 60, "fix_years": 2, "rate": 4.81, "fee": 999.0, "source": "nationwide-intermediary.co.uk product guide F6 (15.09.2026)", "confidence": "full-sheet", "erc": "2/1", "svr": 6.49}, {"lender": "Nationwide", "as_of": "2026-09-15", "segment": "existing-switch", "ltv_max": 60, "fix_years": 2, "rate": 5.08, "fee": 0.0, "source": "nationwide-intermediary.co.uk product guide F6 (15.09.2026)", "confidence": "full-sheet", "erc": "2/1", "svr": 6.49}, {"lender": "Nationwide", "as_of": "2026-09-15", "segment": "existing-switch", "ltv_max": 60, "fix_years": 3, "rate": 4.79, "fee": 999.0, "source": "nationwide-intermediary.co.uk product guide F6 (15.09.2026)", "confidence": "full-sheet", "erc": "3/2/1", "svr": 6.49}, {"lender": "Nationwide", "as_of": "2026-09-15", "segment": "existing-switch", "ltv_max": 60, "fix_years": 3, "rate": 5.05, "fee": 0.0, "source": "nationwide-intermediary.co.uk product guide F6 (15.09.2026)", "confidence": "full-sheet", "erc": "3/2/1", "svr": 6.49}, {"lender": "Nationwide", "as_of": "2026-09-15", "segment": "existing-switch", "ltv_max": 60, "fix_years": 5, "rate": 4.89, "fee": 999.0, "source": "nationwide-intermediary.co.uk product guide F6 (15.09.2026)", "confidence": "full-sheet", "erc": "5/4/3/2/1", "svr": 6.49}, {"lender": "Nationwide", "as_of": "2026-09-15", "segment": "existing-switch", "ltv_max": 60, "fix_years": 5, "rate": 5.04, "fee": 0.0, "source": "nationwide-intermediary.co.uk product guide F6 (15.09.2026)", "confidence": "full-sheet", "erc": "5/4/3/2/1", "svr": 6.49}, {"lender": "Nationwide", "as_of": "2026-09-15", "segment": "existing-switch", "ltv_max": 60, "fix_years": 10, "rate": 5.09, "fee": 999.0, "source": "nationwide-intermediary.co.uk product guide F6 (15.09.2026)", "confidence": "full-sheet", "erc": "6x5,5,4,3,2,1", "svr": 6.49}, {"lender": "Nationwide", "as_of": "2026-09-15", "segment": "existing-switch", "ltv_max": 60, "fix_years": 10, "rate": 5.19, "fee": 0.0, "source": "nationwide-intermediary.co.uk product guide F6 (15.09.2026)", "confidence": "full-sheet", "erc": "6x5,5,4,3,2,1", "svr": 6.49}, {"lender": "Nationwide", "as_of": "2026-09-15", "segment": "existing-switch", "ltv_max": 75, "fix_years": 2, "rate": 4.91, "fee": 999.0, "source": "nationwide-intermediary.co.uk product guide F6 (15.09.2026)", "confidence": "full-sheet", "erc": "2/1", "svr": 6.49}, {"lender": "Nationwide", "as_of": "2026-09-15", "segment": "existing-switch", "ltv_max": 75, "fix_years": 2, "rate": 5.19, "fee": 0.0, "source": "nationwide-intermediary.co.uk product guide F6 (15.09.2026)", "confidence": "full-sheet", "erc": "2/1", "svr": 6.49}, {"lender": "Nationwide", "as_of": "2026-09-15", "segment": "existing-switch", "ltv_max": 75, "fix_years": 3, "rate": 4.9, "fee": 999.0, "source": "nationwide-intermediary.co.uk product guide F6 (15.09.2026)", "confidence": "full-sheet", "erc": "3/2/1", "svr": 6.49}, {"lender": "Nationwide", "as_of": "2026-09-15", "segment": "existing-switch", "ltv_max": 75, "fix_years": 3, "rate": 5.17, "fee": 0.0, "source": "nationwide-intermediary.co.uk product guide F6 (15.09.2026)", "confidence": "full-sheet", "erc": "3/2/1", "svr": 6.49}, {"lender": "Nationwide", "as_of": "2026-09-15", "segment": "existing-switch", "ltv_max": 75, "fix_years": 5, "rate": 4.99, "fee": 999.0, "source": "nationwide-intermediary.co.uk product guide F6 (15.09.2026)", "confidence": "full-sheet", "erc": "5/4/3/2/1", "svr": 6.49}, {"lender": "Nationwide", "as_of": "2026-09-15", "segment": "existing-switch", "ltv_max": 75, "fix_years": 5, "rate": 5.08, "fee": 0.0, "source": "nationwide-intermediary.co.uk product guide F6 (15.09.2026)", "confidence": "full-sheet", "erc": "5/4/3/2/1", "svr": 6.49}, {"lender": "Nationwide", "as_of": "2026-09-15", "segment": "existing-switch", "ltv_max": 75, "fix_years": 10, "rate": 5.14, "fee": 999.0, "source": "nationwide-intermediary.co.uk product guide F6 (15.09.2026)", "confidence": "full-sheet", "erc": "6x5,5,4,3,2,1", "svr": 6.49}, {"lender": "Nationwide", "as_of": "2026-09-15", "segment": "existing-switch", "ltv_max": 75, "fix_years": 10, "rate": 5.29, "fee": 0.0, "source": "nationwide-intermediary.co.uk product guide F6 (15.09.2026)", "confidence": "full-sheet", "erc": "6x5,5,4,3,2,1", "svr": 6.49}, {"lender": "Nationwide", "as_of": "2026-09-15", "segment": "existing-switch", "ltv_max": 80, "fix_years": 2, "rate": 5.09, "fee": 999.0, "source": "nationwide-intermediary.co.uk product guide F6 (15.09.2026)", "confidence": "full-sheet", "erc": "2/1", "svr": 6.49}, {"lender": "Nationwide", "as_of": "2026-09-15", "segment": "existing-switch", "ltv_max": 80, "fix_years": 2, "rate": 5.32, "fee": 0.0, "source": "nationwide-intermediary.co.uk product guide F6 (15.09.2026)", "confidence": "full-sheet", "erc": "2/1", "svr": 6.49}, {"lender": "Nationwide", "as_of": "2026-09-15", "segment": "existing-switch", "ltv_max": 80, "fix_years": 3, "rate": 5.14, "fee": 999.0, "source": "nationwide-intermediary.co.uk product guide F6 (15.09.2026)", "confidence": "full-sheet", "erc": "3/2/1", "svr": 6.49}, {"lender": "Nationwide", "as_of": "2026-09-15", "segment": "existing-switch", "ltv_max": 80, "fix_years": 3, "rate": 5.33, "fee": 0.0, "source": "nationwide-intermediary.co.uk product guide F6 (15.09.2026)", "confidence": "full-sheet", "erc": "3/2/1", "svr": 6.49}, {"lender": "Nationwide", "as_of": "2026-09-15", "segment": "existing-switch", "ltv_max": 80, "fix_years": 5, "rate": 5.14, "fee": 999.0, "source": "nationwide-intermediary.co.uk product guide F6 (15.09.2026)", "confidence": "full-sheet", "erc": "5/4/3/2/1", "svr": 6.49}, {"lender": "Nationwide", "as_of": "2026-09-15", "segment": "existing-switch", "ltv_max": 80, "fix_years": 5, "rate": 5.24, "fee": 0.0, "source": "nationwide-intermediary.co.uk product guide F6 (15.09.2026)", "confidence": "full-sheet", "erc": "5/4/3/2/1", "svr": 6.49}, {"lender": "Nationwide", "as_of": "2026-09-15", "segment": "existing-switch", "ltv_max": 80, "fix_years": 10, "rate": 5.29, "fee": 999.0, "source": "nationwide-intermediary.co.uk product guide F6 (15.09.2026)", "confidence": "full-sheet", "erc": "6x5,5,4,3,2,1", "svr": 6.49}, {"lender": "Nationwide", "as_of": "2026-09-15", "segment": "existing-switch", "ltv_max": 80, "fix_years": 10, "rate": 5.54, "fee": 0.0, "source": "nationwide-intermediary.co.uk product guide F6 (15.09.2026)", "confidence": "full-sheet", "erc": "6x5,5,4,3,2,1", "svr": 6.49}, {"lender": "Nationwide", "as_of": "2026-09-15", "segment": "existing-switch", "ltv_max": 85, "fix_years": 2, "rate": 5.09, "fee": 999.0, "source": "nationwide-intermediary.co.uk product guide F6 (15.09.2026)", "confidence": "full-sheet", "erc": "2/1", "svr": 6.49}, {"lender": "Nationwide", "as_of": "2026-09-15", "segment": "existing-switch", "ltv_max": 85, "fix_years": 2, "rate": 5.32, "fee": 0.0, "source": "nationwide-intermediary.co.uk product guide F6 (15.09.2026)", "confidence": "full-sheet", "erc": "2/1", "svr": 6.49}, {"lender": "Nationwide", "as_of": "2026-09-15", "segment": "existing-switch", "ltv_max": 85, "fix_years": 3, "rate": 5.17, "fee": 999.0, "source": "nationwide-intermediary.co.uk product guide F6 (15.09.2026)", "confidence": "full-sheet", "erc": "3/2/1", "svr": 6.49}, {"lender": "Nationwide", "as_of": "2026-09-15", "segment": "existing-switch", "ltv_max": 85, "fix_years": 3, "rate": 5.36, "fee": 0.0, "source": "nationwide-intermediary.co.uk product guide F6 (15.09.2026)", "confidence": "full-sheet", "erc": "3/2/1", "svr": 6.49}, {"lender": "Nationwide", "as_of": "2026-09-15", "segment": "existing-switch", "ltv_max": 85, "fix_years": 5, "rate": 5.14, "fee": 999.0, "source": "nationwide-intermediary.co.uk product guide F6 (15.09.2026)", "confidence": "full-sheet", "erc": "5/4/3/2/1", "svr": 6.49}, {"lender": "Nationwide", "as_of": "2026-09-15", "segment": "existing-switch", "ltv_max": 85, "fix_years": 5, "rate": 5.24, "fee": 0.0, "source": "nationwide-intermediary.co.uk product guide F6 (15.09.2026)", "confidence": "full-sheet", "erc": "5/4/3/2/1", "svr": 6.49}, {"lender": "Nationwide", "as_of": "2026-09-15", "segment": "existing-switch", "ltv_max": 85, "fix_years": 10, "rate": 5.29, "fee": 999.0, "source": "nationwide-intermediary.co.uk product guide F6 (15.09.2026)", "confidence": "full-sheet", "erc": "6x5,5,4,3,2,1", "svr": 6.49}, {"lender": "Nationwide", "as_of": "2026-09-15", "segment": "existing-switch", "ltv_max": 85, "fix_years": 10, "rate": 5.54, "fee": 0.0, "source": "nationwide-intermediary.co.uk product guide F6 (15.09.2026)", "confidence": "full-sheet", "erc": "6x5,5,4,3,2,1", "svr": 6.49}, {"lender": "Nationwide", "as_of": "2026-09-15", "segment": "existing-switch", "ltv_max": 90, "fix_years": 2, "rate": 5.34, "fee": 999.0, "source": "nationwide-intermediary.co.uk product guide F6 (15.09.2026)", "confidence": "full-sheet", "erc": "2/1", "svr": 6.49}, {"lender": "Nationwide", "as_of": "2026-09-15", "segment": "existing-switch", "ltv_max": 90, "fix_years": 2, "rate": 5.58, "fee": 0.0, "source": "nationwide-intermediary.co.uk product guide F6 (15.09.2026)", "confidence": "full-sheet", "erc": "2/1", "svr": 6.49}, {"lender": "Nationwide", "as_of": "2026-09-15", "segment": "existing-switch", "ltv_max": 90, "fix_years": 3, "rate": 5.37, "fee": 999.0, "source": "nationwide-intermediary.co.uk product guide F6 (15.09.2026)", "confidence": "full-sheet", "erc": "3/2/1", "svr": 6.49}, {"lender": "Nationwide", "as_of": "2026-09-15", "segment": "existing-switch", "ltv_max": 90, "fix_years": 3, "rate": 5.59, "fee": 0.0, "source": "nationwide-intermediary.co.uk product guide F6 (15.09.2026)", "confidence": "full-sheet", "erc": "3/2/1", "svr": 6.49}, {"lender": "Nationwide", "as_of": "2026-09-15", "segment": "existing-switch", "ltv_max": 90, "fix_years": 5, "rate": 5.25, "fee": 999.0, "source": "nationwide-intermediary.co.uk product guide F6 (15.09.2026)", "confidence": "full-sheet", "erc": "5/4/3/2/1", "svr": 6.49}, {"lender": "Nationwide", "as_of": "2026-09-15", "segment": "existing-switch", "ltv_max": 90, "fix_years": 5, "rate": 5.38, "fee": 0.0, "source": "nationwide-intermediary.co.uk product guide F6 (15.09.2026)", "confidence": "full-sheet", "erc": "5/4/3/2/1", "svr": 6.49}, {"lender": "Nationwide", "as_of": "2026-09-15", "segment": "existing-switch", "ltv_max": 90, "fix_years": 10, "rate": 5.59, "fee": 999.0, "source": "nationwide-intermediary.co.uk product guide F6 (15.09.2026)", "confidence": "full-sheet", "erc": "6x5,5,4,3,2,1", "svr": 6.49}, {"lender": "Nationwide", "as_of": "2026-09-15", "segment": "existing-switch", "ltv_max": 90, "fix_years": 10, "rate": 5.79, "fee": 0.0, "source": "nationwide-intermediary.co.uk product guide F6 (15.09.2026)", "confidence": "full-sheet", "erc": "6x5,5,4,3,2,1", "svr": 6.49}, {"lender": "Nationwide", "as_of": "2026-09-15", "segment": "existing-switch", "ltv_max": 95, "fix_years": 2, "rate": 5.59, "fee": 999.0, "source": "nationwide-intermediary.co.uk product guide F6 (15.09.2026)", "confidence": "full-sheet", "erc": "2/1", "svr": 6.49}, {"lender": "Nationwide", "as_of": "2026-09-15", "segment": "existing-switch", "ltv_max": 95, "fix_years": 2, "rate": 5.73, "fee": 0.0, "source": "nationwide-intermediary.co.uk product guide F6 (15.09.2026)", "confidence": "full-sheet", "erc": "2/1", "svr": 6.49}, {"lender": "Nationwide", "as_of": "2026-09-15", "segment": "existing-switch", "ltv_max": 95, "fix_years": 3, "rate": 5.62, "fee": 999.0, "source": "nationwide-intermediary.co.uk product guide F6 (15.09.2026)", "confidence": "full-sheet", "erc": "3/2/1", "svr": 6.49}, {"lender": "Nationwide", "as_of": "2026-09-15", "segment": "existing-switch", "ltv_max": 95, "fix_years": 3, "rate": 5.73, "fee": 0.0, "source": "nationwide-intermediary.co.uk product guide F6 (15.09.2026)", "confidence": "full-sheet", "erc": "3/2/1", "svr": 6.49}, {"lender": "Nationwide", "as_of": "2026-09-15", "segment": "existing-switch", "ltv_max": 95, "fix_years": 5, "rate": 5.55, "fee": 999.0, "source": "nationwide-intermediary.co.uk product guide F6 (15.09.2026)", "confidence": "full-sheet", "erc": "5/4/3/2/1", "svr": 6.49}, {"lender": "Nationwide", "as_of": "2026-09-15", "segment": "existing-switch", "ltv_max": 95, "fix_years": 5, "rate": 5.6, "fee": 0.0, "source": "nationwide-intermediary.co.uk product guide F6 (15.09.2026)", "confidence": "full-sheet", "erc": "5/4/3/2/1", "svr": 6.49}, {"lender": "TSB", "as_of": "2026-09-15", "segment": "remortgage", "ltv_max": 60, "fix_years": 2, "rate": 4.84, "fee": 1495.0, "source": "intermediary.tsb.co.uk product guide (15.09.2026)", "confidence": "full-sheet", "erc": "2.5/1.5", "svr": 7.24}, {"lender": "TSB", "as_of": "2026-09-15", "segment": "remortgage", "ltv_max": 60, "fix_years": 2, "rate": 4.89, "fee": 995.0, "source": "intermediary.tsb.co.uk product guide (15.09.2026)", "confidence": "full-sheet", "erc": "2.5/1.5", "svr": 7.24}, {"lender": "TSB", "as_of": "2026-09-15", "segment": "remortgage", "ltv_max": 60, "fix_years": 2, "rate": 5.14, "fee": 0.0, "source": "intermediary.tsb.co.uk product guide (15.09.2026)", "confidence": "full-sheet", "erc": "2.5/1.5", "svr": 7.24}, {"lender": "TSB", "as_of": "2026-09-15", "segment": "remortgage", "ltv_max": 75, "fix_years": 2, "rate": 4.94, "fee": 1495.0, "source": "intermediary.tsb.co.uk product guide (15.09.2026)", "confidence": "full-sheet", "erc": "2.5/1.5", "svr": 7.24}, {"lender": "TSB", "as_of": "2026-09-15", "segment": "remortgage", "ltv_max": 75, "fix_years": 2, "rate": 4.99, "fee": 995.0, "source": "intermediary.tsb.co.uk product guide (15.09.2026)", "confidence": "full-sheet", "erc": "2.5/1.5", "svr": 7.24}, {"lender": "TSB", "as_of": "2026-09-15", "segment": "remortgage", "ltv_max": 75, "fix_years": 2, "rate": 5.24, "fee": 0.0, "source": "intermediary.tsb.co.uk product guide (15.09.2026)", "confidence": "full-sheet", "erc": "2.5/1.5", "svr": 7.24}, {"lender": "TSB", "as_of": "2026-09-15", "segment": "remortgage", "ltv_max": 80, "fix_years": 2, "rate": 5.14, "fee": 995.0, "source": "intermediary.tsb.co.uk product guide (15.09.2026)", "confidence": "full-sheet", "erc": "2.5/1.5", "svr": 7.24}, {"lender": "TSB", "as_of": "2026-09-15", "segment": "remortgage", "ltv_max": 80, "fix_years": 2, "rate": 5.39, "fee": 0.0, "source": "intermediary.tsb.co.uk product guide (15.09.2026)", "confidence": "full-sheet", "erc": "2.5/1.5", "svr": 7.24}, {"lender": "TSB", "as_of": "2026-09-15", "segment": "remortgage", "ltv_max": 85, "fix_years": 2, "rate": 5.14, "fee": 995.0, "source": "intermediary.tsb.co.uk product guide (15.09.2026)", "confidence": "full-sheet", "erc": "2.5/1.5", "svr": 7.24}, {"lender": "TSB", "as_of": "2026-09-15", "segment": "remortgage", "ltv_max": 85, "fix_years": 2, "rate": 5.39, "fee": 0.0, "source": "intermediary.tsb.co.uk product guide (15.09.2026)", "confidence": "full-sheet", "erc": "2.5/1.5", "svr": 7.24}, {"lender": "TSB", "as_of": "2026-09-15", "segment": "remortgage", "ltv_max": 90, "fix_years": 2, "rate": 5.54, "fee": 0.0, "source": "intermediary.tsb.co.uk product guide (15.09.2026)", "confidence": "full-sheet", "erc": "2.5/1.5", "svr": 7.24}, {"lender": "TSB", "as_of": "2026-09-15", "segment": "remortgage", "ltv_max": 60, "fix_years": 3, "rate": 4.84, "fee": 995.0, "source": "intermediary.tsb.co.uk product guide (15.09.2026)", "confidence": "full-sheet", "erc": "3.5/2.5/1.5", "svr": 7.24}, {"lender": "TSB", "as_of": "2026-09-15", "segment": "remortgage", "ltv_max": 60, "fix_years": 3, "rate": 5.09, "fee": 0.0, "source": "intermediary.tsb.co.uk product guide (15.09.2026)", "confidence": "full-sheet", "erc": "3.5/2.5/1.5", "svr": 7.24}, {"lender": "TSB", "as_of": "2026-09-15", "segment": "remortgage", "ltv_max": 75, "fix_years": 3, "rate": 4.94, "fee": 995.0, "source": "intermediary.tsb.co.uk product guide (15.09.2026)", "confidence": "full-sheet", "erc": "3.5/2.5/1.5", "svr": 7.24}, {"lender": "TSB", "as_of": "2026-09-15", "segment": "remortgage", "ltv_max": 75, "fix_years": 3, "rate": 5.19, "fee": 0.0, "source": "intermediary.tsb.co.uk product guide (15.09.2026)", "confidence": "full-sheet", "erc": "3.5/2.5/1.5", "svr": 7.24}, {"lender": "TSB", "as_of": "2026-09-15", "segment": "remortgage", "ltv_max": 80, "fix_years": 3, "rate": 5.09, "fee": 995.0, "source": "intermediary.tsb.co.uk product guide (15.09.2026)", "confidence": "full-sheet", "erc": "3.5/2.5/1.5", "svr": 7.24}, {"lender": "TSB", "as_of": "2026-09-15", "segment": "remortgage", "ltv_max": 80, "fix_years": 3, "rate": 5.34, "fee": 0.0, "source": "intermediary.tsb.co.uk product guide (15.09.2026)", "confidence": "full-sheet", "erc": "3.5/2.5/1.5", "svr": 7.24}, {"lender": "TSB", "as_of": "2026-09-15", "segment": "remortgage", "ltv_max": 85, "fix_years": 3, "rate": 5.09, "fee": 995.0, "source": "intermediary.tsb.co.uk product guide (15.09.2026)", "confidence": "full-sheet", "erc": "3.5/2.5/1.5", "svr": 7.24}, {"lender": "TSB", "as_of": "2026-09-15", "segment": "remortgage", "ltv_max": 85, "fix_years": 3, "rate": 5.34, "fee": 0.0, "source": "intermediary.tsb.co.uk product guide (15.09.2026)", "confidence": "full-sheet", "erc": "3.5/2.5/1.5", "svr": 7.24}, {"lender": "TSB", "as_of": "2026-09-15", "segment": "remortgage", "ltv_max": 60, "fix_years": 5, "rate": 4.94, "fee": 995.0, "source": "intermediary.tsb.co.uk product guide (15.09.2026)", "confidence": "full-sheet", "erc": "5/4/3/2", "svr": 7.24}, {"lender": "TSB", "as_of": "2026-09-15", "segment": "remortgage", "ltv_max": 60, "fix_years": 5, "rate": 5.09, "fee": 0.0, "source": "intermediary.tsb.co.uk product guide (15.09.2026)", "confidence": "full-sheet", "erc": "5/4/3/2", "svr": 7.24}, {"lender": "TSB", "as_of": "2026-09-15", "segment": "remortgage", "ltv_max": 75, "fix_years": 5, "rate": 5.04, "fee": 995.0, "source": "intermediary.tsb.co.uk product guide (15.09.2026)", "confidence": "full-sheet", "erc": "5/4/3/2", "svr": 7.24}, {"lender": "TSB", "as_of": "2026-09-15", "segment": "remortgage", "ltv_max": 75, "fix_years": 5, "rate": 5.19, "fee": 0.0, "source": "intermediary.tsb.co.uk product guide (15.09.2026)", "confidence": "full-sheet", "erc": "5/4/3/2", "svr": 7.24}, {"lender": "TSB", "as_of": "2026-09-15", "segment": "remortgage", "ltv_max": 80, "fix_years": 5, "rate": 5.19, "fee": 995.0, "source": "intermediary.tsb.co.uk product guide (15.09.2026)", "confidence": "full-sheet", "erc": "5/4/3/2", "svr": 7.24}, {"lender": "TSB", "as_of": "2026-09-15", "segment": "remortgage", "ltv_max": 80, "fix_years": 5, "rate": 5.34, "fee": 0.0, "source": "intermediary.tsb.co.uk product guide (15.09.2026)", "confidence": "full-sheet", "erc": "5/4/3/2", "svr": 7.24}, {"lender": "TSB", "as_of": "2026-09-15", "segment": "remortgage", "ltv_max": 85, "fix_years": 5, "rate": 5.19, "fee": 995.0, "source": "intermediary.tsb.co.uk product guide (15.09.2026)", "confidence": "full-sheet", "erc": "5/4/3/2", "svr": 7.24}, {"lender": "TSB", "as_of": "2026-09-15", "segment": "remortgage", "ltv_max": 85, "fix_years": 5, "rate": 5.34, "fee": 0.0, "source": "intermediary.tsb.co.uk product guide (15.09.2026)", "confidence": "full-sheet", "erc": "5/4/3/2", "svr": 7.24}, {"lender": "TSB", "as_of": "2026-09-15", "segment": "remortgage", "ltv_max": 90, "fix_years": 5, "rate": 5.39, "fee": 0.0, "source": "intermediary.tsb.co.uk product guide (15.09.2026)", "confidence": "full-sheet", "erc": "5/4/3/2", "svr": 7.24}, {"lender": "TSB", "as_of": "2026-09-15", "segment": "existing-switch", "ltv_max": 60, "fix_years": 2, "rate": 4.64, "fee": 1495.0, "source": "intermediary.tsb.co.uk product guide (15.09.2026)", "confidence": "full-sheet", "erc": "2.5/1.5", "svr": 7.24}, {"lender": "TSB", "as_of": "2026-09-15", "segment": "existing-switch", "ltv_max": 60, "fix_years": 2, "rate": 4.69, "fee": 995.0, "source": "intermediary.tsb.co.uk product guide (15.09.2026)", "confidence": "full-sheet", "erc": "2.5/1.5", "svr": 7.24}, {"lender": "TSB", "as_of": "2026-09-15", "segment": "existing-switch", "ltv_max": 60, "fix_years": 2, "rate": 4.99, "fee": 0.0, "source": "intermediary.tsb.co.uk product guide (15.09.2026)", "confidence": "full-sheet", "erc": "2.5/1.5", "svr": 7.24}, {"lender": "TSB", "as_of": "2026-09-15", "segment": "existing-switch", "ltv_max": 75, "fix_years": 2, "rate": 4.74, "fee": 1495.0, "source": "intermediary.tsb.co.uk product guide (15.09.2026)", "confidence": "full-sheet", "erc": "2.5/1.5", "svr": 7.24}, {"lender": "TSB", "as_of": "2026-09-15", "segment": "existing-switch", "ltv_max": 75, "fix_years": 2, "rate": 4.79, "fee": 995.0, "source": "intermediary.tsb.co.uk product guide (15.09.2026)", "confidence": "full-sheet", "erc": "2.5/1.5", "svr": 7.24}, {"lender": "TSB", "as_of": "2026-09-15", "segment": "existing-switch", "ltv_max": 75, "fix_years": 2, "rate": 5.04, "fee": 0.0, "source": "intermediary.tsb.co.uk product guide (15.09.2026)", "confidence": "full-sheet", "erc": "2.5/1.5", "svr": 7.24}, {"lender": "TSB", "as_of": "2026-09-15", "segment": "existing-switch", "ltv_max": 80, "fix_years": 2, "rate": 4.99, "fee": 995.0, "source": "intermediary.tsb.co.uk product guide (15.09.2026)", "confidence": "full-sheet", "erc": "2.5/1.5", "svr": 7.24}, {"lender": "TSB", "as_of": "2026-09-15", "segment": "existing-switch", "ltv_max": 80, "fix_years": 2, "rate": 5.24, "fee": 0.0, "source": "intermediary.tsb.co.uk product guide (15.09.2026)", "confidence": "full-sheet", "erc": "2.5/1.5", "svr": 7.24}, {"lender": "TSB", "as_of": "2026-09-15", "segment": "existing-switch", "ltv_max": 85, "fix_years": 2, "rate": 4.99, "fee": 995.0, "source": "intermediary.tsb.co.uk product guide (15.09.2026)", "confidence": "full-sheet", "erc": "2.5/1.5", "svr": 7.24}, {"lender": "TSB", "as_of": "2026-09-15", "segment": "existing-switch", "ltv_max": 85, "fix_years": 2, "rate": 5.24, "fee": 0.0, "source": "intermediary.tsb.co.uk product guide (15.09.2026)", "confidence": "full-sheet", "erc": "2.5/1.5", "svr": 7.24}, {"lender": "TSB", "as_of": "2026-09-15", "segment": "existing-switch", "ltv_max": 90, "fix_years": 2, "rate": 5.19, "fee": 995.0, "source": "intermediary.tsb.co.uk product guide (15.09.2026)", "confidence": "full-sheet", "erc": "2.5/1.5", "svr": 7.24}, {"lender": "TSB", "as_of": "2026-09-15", "segment": "existing-switch", "ltv_max": 90, "fix_years": 2, "rate": 5.39, "fee": 0.0, "source": "intermediary.tsb.co.uk product guide (15.09.2026)", "confidence": "full-sheet", "erc": "2.5/1.5", "svr": 7.24}, {"lender": "TSB", "as_of": "2026-09-15", "segment": "existing-switch", "ltv_max": 60, "fix_years": 3, "rate": 4.69, "fee": 1495.0, "source": "intermediary.tsb.co.uk product guide (15.09.2026)", "confidence": "full-sheet", "erc": "3.5/2.5/1.5", "svr": 7.24}, {"lender": "TSB", "as_of": "2026-09-15", "segment": "existing-switch", "ltv_max": 60, "fix_years": 3, "rate": 4.74, "fee": 995.0, "source": "intermediary.tsb.co.uk product guide (15.09.2026)", "confidence": "full-sheet", "erc": "3.5/2.5/1.5", "svr": 7.24}, {"lender": "TSB", "as_of": "2026-09-15", "segment": "existing-switch", "ltv_max": 60, "fix_years": 3, "rate": 4.99, "fee": 0.0, "source": "intermediary.tsb.co.uk product guide (15.09.2026)", "confidence": "full-sheet", "erc": "3.5/2.5/1.5", "svr": 7.24}, {"lender": "TSB", "as_of": "2026-09-15", "segment": "existing-switch", "ltv_max": 75, "fix_years": 3, "rate": 4.79, "fee": 1495.0, "source": "intermediary.tsb.co.uk product guide (15.09.2026)", "confidence": "full-sheet", "erc": "3.5/2.5/1.5", "svr": 7.24}, {"lender": "TSB", "as_of": "2026-09-15", "segment": "existing-switch", "ltv_max": 75, "fix_years": 3, "rate": 4.84, "fee": 995.0, "source": "intermediary.tsb.co.uk product guide (15.09.2026)", "confidence": "full-sheet", "erc": "3.5/2.5/1.5", "svr": 7.24}, {"lender": "TSB", "as_of": "2026-09-15", "segment": "existing-switch", "ltv_max": 75, "fix_years": 3, "rate": 5.09, "fee": 0.0, "source": "intermediary.tsb.co.uk product guide (15.09.2026)", "confidence": "full-sheet", "erc": "3.5/2.5/1.5", "svr": 7.24}, {"lender": "TSB", "as_of": "2026-09-15", "segment": "existing-switch", "ltv_max": 80, "fix_years": 3, "rate": 4.99, "fee": 995.0, "source": "intermediary.tsb.co.uk product guide (15.09.2026)", "confidence": "full-sheet", "erc": "3.5/2.5/1.5", "svr": 7.24}, {"lender": "TSB", "as_of": "2026-09-15", "segment": "existing-switch", "ltv_max": 80, "fix_years": 3, "rate": 5.19, "fee": 0.0, "source": "intermediary.tsb.co.uk product guide (15.09.2026)", "confidence": "full-sheet", "erc": "3.5/2.5/1.5", "svr": 7.24}, {"lender": "TSB", "as_of": "2026-09-15", "segment": "existing-switch", "ltv_max": 85, "fix_years": 3, "rate": 5.04, "fee": 995.0, "source": "intermediary.tsb.co.uk product guide (15.09.2026)", "confidence": "full-sheet", "erc": "3.5/2.5/1.5", "svr": 7.24}, {"lender": "TSB", "as_of": "2026-09-15", "segment": "existing-switch", "ltv_max": 85, "fix_years": 3, "rate": 5.24, "fee": 0.0, "source": "intermediary.tsb.co.uk product guide (15.09.2026)", "confidence": "full-sheet", "erc": "3.5/2.5/1.5", "svr": 7.24}, {"lender": "TSB", "as_of": "2026-09-15", "segment": "existing-switch", "ltv_max": 60, "fix_years": 5, "rate": 4.79, "fee": 1495.0, "source": "intermediary.tsb.co.uk product guide (15.09.2026)", "confidence": "full-sheet", "erc": "5/4/3/2", "svr": 7.24}, {"lender": "TSB", "as_of": "2026-09-15", "segment": "existing-switch", "ltv_max": 60, "fix_years": 5, "rate": 4.84, "fee": 995.0, "source": "intermediary.tsb.co.uk product guide (15.09.2026)", "confidence": "full-sheet", "erc": "5/4/3/2", "svr": 7.24}, {"lender": "TSB", "as_of": "2026-09-15", "segment": "existing-switch", "ltv_max": 60, "fix_years": 5, "rate": 4.94, "fee": 0.0, "source": "intermediary.tsb.co.uk product guide (15.09.2026)", "confidence": "full-sheet", "erc": "5/4/3/2", "svr": 7.24}, {"lender": "TSB", "as_of": "2026-09-15", "segment": "existing-switch", "ltv_max": 75, "fix_years": 5, "rate": 4.89, "fee": 1495.0, "source": "intermediary.tsb.co.uk product guide (15.09.2026)", "confidence": "full-sheet", "erc": "5/4/3/2", "svr": 7.24}, {"lender": "TSB", "as_of": "2026-09-15", "segment": "existing-switch", "ltv_max": 75, "fix_years": 5, "rate": 4.94, "fee": 995.0, "source": "intermediary.tsb.co.uk product guide (15.09.2026)", "confidence": "full-sheet", "erc": "5/4/3/2", "svr": 7.24}, {"lender": "TSB", "as_of": "2026-09-15", "segment": "existing-switch", "ltv_max": 75, "fix_years": 5, "rate": 5.04, "fee": 0.0, "source": "intermediary.tsb.co.uk product guide (15.09.2026)", "confidence": "full-sheet", "erc": "5/4/3/2", "svr": 7.24}, {"lender": "TSB", "as_of": "2026-09-15", "segment": "existing-switch", "ltv_max": 80, "fix_years": 5, "rate": 5.09, "fee": 995.0, "source": "intermediary.tsb.co.uk product guide (15.09.2026)", "confidence": "full-sheet", "erc": "5/4/3/2", "svr": 7.24}, {"lender": "TSB", "as_of": "2026-09-15", "segment": "existing-switch", "ltv_max": 80, "fix_years": 5, "rate": 5.24, "fee": 0.0, "source": "intermediary.tsb.co.uk product guide (15.09.2026)", "confidence": "full-sheet", "erc": "5/4/3/2", "svr": 7.24}, {"lender": "TSB", "as_of": "2026-09-15", "segment": "existing-switch", "ltv_max": 85, "fix_years": 5, "rate": 5.09, "fee": 995.0, "source": "intermediary.tsb.co.uk product guide (15.09.2026)", "confidence": "full-sheet", "erc": "5/4/3/2", "svr": 7.24}, {"lender": "TSB", "as_of": "2026-09-15", "segment": "existing-switch", "ltv_max": 85, "fix_years": 5, "rate": 5.24, "fee": 0.0, "source": "intermediary.tsb.co.uk product guide (15.09.2026)", "confidence": "full-sheet", "erc": "5/4/3/2", "svr": 7.24}, {"lender": "TSB", "as_of": "2026-09-15", "segment": "existing-switch", "ltv_max": 90, "fix_years": 5, "rate": 5.19, "fee": 995.0, "source": "intermediary.tsb.co.uk product guide (15.09.2026)", "confidence": "full-sheet", "erc": "5/4/3/2", "svr": 7.24}, {"lender": "TSB", "as_of": "2026-09-15", "segment": "existing-switch", "ltv_max": 90, "fix_years": 5, "rate": 5.29, "fee": 0.0, "source": "intermediary.tsb.co.uk product guide (15.09.2026)", "confidence": "full-sheet", "erc": "5/4/3/2", "svr": 7.24}, {"lender": "Halifax", "as_of": "2026-08-06", "segment": "remortgage", "ltv_max": 60, "fix_years": 2, "rate": 4.46, "fee": 999.0, "source": "Uswitch best-buy table, 6 Aug 2026 (fee assumed \u00a3999)", "confidence": "best-buy-point", "erc": null, "svr": null}, {"lender": "Halifax", "as_of": "2026-08-06", "segment": "remortgage", "ltv_max": 60, "fix_years": 5, "rate": 4.5, "fee": 999.0, "source": "Uswitch best-buy table, 6 Aug 2026 (fee assumed \u00a3999)", "confidence": "best-buy-point", "erc": null, "svr": null}, {"lender": "first direct", "as_of": "2026-08-05", "segment": "remortgage", "ltv_max": 60, "fix_years": 2, "rate": 4.47, "fee": 490.0, "source": "Moneyfacts weekly roundup, early Aug 2026", "confidence": "best-buy-point", "erc": null, "svr": null}, {"lender": "first direct", "as_of": "2026-08-05", "segment": "remortgage", "ltv_max": 60, "fix_years": 3, "rate": 4.64, "fee": 490.0, "source": "Moneyfacts weekly roundup, early Aug 2026", "confidence": "best-buy-point", "erc": null, "svr": null}, {"lender": "first direct", "as_of": "2026-08-05", "segment": "remortgage", "ltv_max": 60, "fix_years": 5, "rate": 4.54, "fee": 490.0, "source": "Moneyfacts weekly roundup, early Aug 2026", "confidence": "best-buy-point", "erc": null, "svr": null}, {"lender": "first direct", "as_of": "2026-08-05", "segment": "remortgage", "ltv_max": 75, "fix_years": 2, "rate": 4.57, "fee": 490.0, "source": "Moneyfacts weekly roundup, early Aug 2026", "confidence": "best-buy-point", "erc": null, "svr": null}, {"lender": "first direct", "as_of": "2026-08-05", "segment": "remortgage", "ltv_max": 75, "fix_years": 5, "rate": 4.62, "fee": 490.0, "source": "Moneyfacts weekly roundup, early Aug 2026", "confidence": "best-buy-point", "erc": null, "svr": null}, {"lender": "first direct", "as_of": "2026-08-05", "segment": "remortgage", "ltv_max": 85, "fix_years": 3, "rate": 4.99, "fee": 490.0, "source": "Moneyfacts weekly roundup, early Aug 2026", "confidence": "best-buy-point", "erc": null, "svr": null}, {"lender": "BoE market average", "as_of": "2026-08-31", "segment": "benchmark", "ltv_max": 75, "fix_years": 2, "rate": 4.92, "fee": null, "source": "Bank of England quoted household rates, 75% LTV, Aug 2026", "confidence": "official-average", "erc": null, "svr": null}, {"lender": "BoE market average", "as_of": "2026-08-31", "segment": "benchmark", "ltv_max": 75, "fix_years": 3, "rate": 4.77, "fee": null, "source": "Bank of England quoted household rates, 75% LTV, Aug 2026", "confidence": "official-average", "erc": null, "svr": null}, {"lender": "BoE market average", "as_of": "2026-08-31", "segment": "benchmark", "ltv_max": 75, "fix_years": 5, "rate": 4.78, "fee": null, "source": "Bank of England quoted household rates, 75% LTV, Aug 2026", "confidence": "official-average", "erc": null, "svr": null}, {"lender": "BoE market average", "as_of": "2026-08-31", "segment": "benchmark", "ltv_max": 75, "fix_years": 10, "rate": 5.25, "fee": null, "source": "Bank of England quoted household rates, 75% LTV, Aug 2026", "confidence": "official-average", "erc": null, "svr": null}];
+  const renderLenders = () => {
+    const ltv = +$("lLtv").value, fy = +$("lFix").value, seg = $("lSeg").value, m = market();
+    const swap = (m.ois[fy] ?? Engine.forwardZero(m.ois, 0, fy));
+    const rows = LENDERS.filter(p => p.fix_years === fy && (p.segment === "benchmark" ? (p.ltv_max === 75) : (p.segment === seg && p.ltv_max === ltv)));
+    if (!rows.length) { $("lenderTable").innerHTML = '<p class="note">No published product for that combination in the current dataset.</p>'; return; }
+    const loan = { balance: num("bal"), termMonths: Math.round(num("term") * 12) }, d = Engine.disc(m), H = fy * 12;
+    const crossover = (p) => {
+      const sib = LENDERS.find(q => q.lender === p.lender && q.segment === p.segment && q.ltv_max === p.ltv_max && q.fix_years === fy && q.fee === 0);
+      if (!sib || !p.fee) return null;
+      const adv = L => Engine.simulate({ balance: L, termMonths: 300 }, [{ rate: sib.rate, months: H }], H, d, m.svr).tco - Engine.simulate({ balance: L, termMonths: 300 }, [{ rate: p.rate, months: H, fee: p.fee }], H, d, m.svr).tco;
+      let lo = 10000, hi = 3000000; if (adv(hi) < 0) return Infinity;
+      for (let i = 0; i < 50; i++) { const mid = (lo + hi) / 2; adv(mid) > 0 ? hi = mid : lo = mid; } return hi;
+    };
+    const tco = p => Engine.simulate(loan, [{ rate: p.rate, months: H, fee: p.fee || 0, feeAdded: $("feeAdded").checked }], H, d, m.svr).tco;
+    const scored = rows.map(p => ({ ...p, tco: p.segment === "benchmark" ? null : tco(p), x: p.segment === "benchmark" ? null : crossover(p) }));
+    const best = Math.min(...scored.filter(p => p.tco != null).map(p => p.tco));
+    scored.sort((a, b) => (a.tco ?? 1e12) - (b.tco ?? 1e12));
+    let h = `<table><thead><tr><th>Lender</th><th>Rate</th><th>Fee</th><th>Spread over ${fy}y swap</th><th>Fee wins above</th><th>Cost over the fix on your balance</th><th>As of</th><th></th></tr></thead><tbody>`;
+    for (const p of scored) {
+      const isB = p.segment === "benchmark", isBest = p.tco != null && Math.abs(p.tco - best) < 1;
+      h += `<tr><td class="name ${isB ? "mkt" : ""}">${p.lender}<div class="conf">${p.confidence.replace("-", " ")}</div></td><td>${pct(p.rate)}</td><td>${isB ? "—" : gbp(p.fee || 0)}</td><td>${Math.round((p.rate - swap) * 100)}bp</td><td>${p.x == null ? "—" : p.x === Infinity ? "never" : gbp(p.x)}</td><td class="${isBest ? "best" : ""}">${p.tco == null ? "—" : gbp(p.tco)}</td><td class="conf">${p.as_of}</td><td>${isB ? "" : `<button type="button" data-fy="${fy}" data-rate="${p.rate}" data-fee="${p.fee || 0}">Use as my offer</button>`}</td></tr>`;
+    }
+    $("lenderTable").innerHTML = h + "</tbody></table>";
+    $("lenderTable").querySelectorAll("button").forEach(b => b.addEventListener("click", () => { const fy2 = +b.dataset.fy; if (fy2 === 2) $("o2").value = b.dataset.rate; else if (fy2 === 5) $("o5").value = b.dataset.rate; $("fee").value = b.dataset.fee; $("wi").value = 0; run(); window.scrollTo({ top: 0, behavior: reduced ? "auto" : "smooth" }); }));
+  };
+  ["lLtv", "lFix", "lSeg"].forEach(k => $(k).addEventListener("input", renderLenders));
+  const run = () => { try { mode === "A" ? runA() : runB(); renderLenders(); } catch (e) { $("lead").textContent = "Check the inputs: " + e.message; } save(); };
+  const setMode = m => { const prev = mode; if (prev !== m && matches(presets[prev])) apply(presets[m]); mode = m; $("modeA").setAttribute("aria-pressed", m === "A"); $("modeB").setAttribute("aria-pressed", m === "B"); $("ercBlock").classList.toggle("hidden", m !== "B"); $("wi").value = 0; run(); };
+  $("modeA").addEventListener("click", () => setMode("A"));
+  $("modeB").addEventListener("click", () => setMode("B"));
+  $("wi").addEventListener("input", whatIf);
+  ids.forEach(k => $(k).addEventListener("input", () => { $("wi").value = 0; run(); }));
+  load(); setMode(mode);
+})();
+</script>
+</body>
+</html>
